@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
+<AnchorPane prefHeight="530.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Laptop_Shop_Management.controller.TaxRateFromController">
+   <children>
+      <Label layoutX="103.0" layoutY="110.0" prefHeight="30.0" prefWidth="306.0" text="Change Tax Rate " textFill="DODGERBLUE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Slider fx:id="taxSlider" layoutX="114.0" layoutY="176.0" majorTickUnit="5.0" max="40.0" minorTickCount="0" onMouseClicked="#taxSliderAction" orientation="VERTICAL" prefHeight="268.0" prefWidth="47.0" style="-fx-show-tick-labels: true; -fx-show-tick-marks: true;" value="10.0" />
+      <Label layoutX="220.0" layoutY="281.0" prefHeight="19.0" prefWidth="160.0" text="Selected Tax Rate : ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="300.0" layoutY="371.0" mnemonicParsing="false" onAction="#btnChangeAction" prefHeight="50.0" prefWidth="145.0" style="-fx-background-color: #1e90ff; -fx-background-radius: 7;" text="Change" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Label layoutX="438.0" layoutY="281.0" text="\%">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtRate" layoutX="373.0" layoutY="276.0" onAction="#txtRateAction" prefHeight="29.0" prefWidth="61.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+   </children>
 </AnchorPane>

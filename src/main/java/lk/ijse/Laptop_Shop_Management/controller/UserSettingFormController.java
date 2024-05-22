@@ -1,2 +1,137 @@
-package lk.ijse.Laptop_Shop_Management.controller;public class UserSettingFormController {
+package lk.ijse.Laptop_Shop_Management.controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
+import lk.ijse.Laptop_Shop_Management.model.User;
+import lk.ijse.Laptop_Shop_Management.repository.UserRepo;
+import lk.ijse.Laptop_Shop_Management.util.PasswordStorage;
+import lk.ijse.Laptop_Shop_Management.util.Regex;
+
+import java.io.File;
+
+public class UserSettingFormController {
+
+    @FXML
+    private ImageView imageViewPP;
+
+    @FXML
+    private StackPane paneImage;
+
+    @FXML
+    private PasswordField txtPassword;
+
+    @FXML
+    private TextField txtUserName;
+
+    @FXML
+    private AnchorPane userSettingForm;
+
+    public void initialize() {
+        setPP();
+        txtUserName.setText(LoginFormController.user.getUserName());
+        txtPassword.setText(LoginFormController.user.getPassword());
+    }
+
+    private void setPP() {
+        Image image = new Image("file:" + LoginFormController.user.getView());
+        imageViewPP = new ImageView(image);
+
+        Circle clip = new Circle();
+        clip.centerXProperty().bind(imageViewPP.fitWidthProperty().divide(2));
+        clip.centerYProperty().bind(imageViewPP.fitHeightProperty().divide(2));
+        clip.radiusProperty().bind(imageViewPP.fitWidthProperty().divide(2));
+
+        imageViewPP.setClip(clip);
+
+        imageViewPP.setFitWidth(100);
+        imageViewPP.setFitHeight(100);
+
+        imageViewPP.setClip(clip);
+
+        paneImage.getChildren().add(imageViewPP);
+    }
+
+    @FXML
+    void btnEditAction(ActionEvent event) {
+        getNewPP();
+    }
+
+    private void getNewPP(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Profile Picture");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null  && selectedFile.exists()) {
+            Image image = new Image(selectedFile.toURI().toString());
+            imageViewPP.setImage(image);
+
+            String profilePicturePath = selectedFile.getAbsolutePath();
+            LoginFormController.user.setView(profilePicturePath);
+        }
+    }
+    @FXML
+    void btnSaveAction(ActionEvent event) {
+        if (isValied()){
+            if (!txtUserName.getText().equals("")){
+                LoginFormController.user.setUserName(txtUserName.getText());
+            }
+            if (!txtPassword.getText().equals("")){
+                LoginFormController.user.setPassword(txtPassword.getText());
+            }
+
+            try {
+                User user = LoginFormController.user;
+                user.setPassword(getPassword());
+                if (UserRepo.updateUser(user)){
+                    new Alert(Alert.AlertType.CONFIRMATION, "User Updated !!").show();
+                }
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        }
+    }
+
+    private String getPassword(){
+        return PasswordStorage.hashPassword(LoginFormController.user.getPassword());
+    }
+
+    @FXML
+    void paneImageAction(MouseEvent event) {
+        getNewPP();
+    }
+
+    @FXML
+    void userNameAction(ActionEvent event) {
+        txtPassword.requestFocus();
+    }
+
+    public boolean isValied() {
+        if (!Regex.setTextColor(lk.ijse.Laptop_Shop_Management.util.TextField.NAME,txtUserName)) return false;
+        if (!Regex.setTextColor(lk.ijse.Laptop_Shop_Management.util.TextField.PASSWORD, txtPassword)) return false;
+        return true;
+    }
+
+    @FXML
+    void txtUserNameAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Laptop_Shop_Management.util.TextField.NAME,txtUserName);
+    }
+
+    @FXML
+    void txtPasswordAction(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.Laptop_Shop_Management.util.TextField.PASSWORD,txtPassword);
+    }
+
 }

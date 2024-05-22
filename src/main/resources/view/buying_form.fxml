@@ -1,14 +1,193 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.BuyingForm"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane fx:id="purchaseForm" prefHeight="1050.0" prefWidth="1483.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Laptop_Shop_Management.controller.BuyingFormController">
+   <children>
+      <AnchorPane layoutX="50.0" layoutY="19.0" prefHeight="1013.0" prefWidth="1383.0" style="-fx-background-color: white;" stylesheets="@../css/comboBox.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <Label fx:id="labelDate" layoutX="960.0" layoutY="135.0" prefHeight="32.0" prefWidth="328.0" style="-fx-border-color: black;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelSupplierName" layoutX="960.0" layoutY="235.0" prefHeight="32.0" prefWidth="328.0" style="-fx-border-color: black;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button layoutX="569.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnNewSupplierAction" prefHeight="32.0" prefWidth="48.0" style="-fx-background-color: #1e90ff;" text="+" textFill="WHITE" />
+            <Button alignment="CENTER" layoutX="901.0" layoutY="912.0" mnemonicParsing="false" onAction="#btnNewOrder" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: white; -fx-border-color: black;" text="New">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-add-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="1138.0" layoutY="913.0" mnemonicParsing="false" onAction="#btnBuyAction" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #1E90FF;" text="   Buy" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-buy-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="654.0" layoutY="912.0" mnemonicParsing="false" onAction="#btnCloseAction" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: white; -fx-border-color: black;" text="Close">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-close.gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Label fx:id="labelNetTotal" layoutX="196.0" layoutY="931.0" prefHeight="32.0" prefWidth="239.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="931.0" prefHeight="32.0" prefWidth="119.0" text="Net Total :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="371.0" layoutY="458.0" mnemonicParsing="false" onAction="#btnNewItemAction" prefHeight="32.0" prefWidth="88.0" style="-fx-background-color: #1e90ff;" text="+ New" textFill="WHITE" />
+            <TextField fx:id="txtUnitPrice" layoutX="967.0" layoutY="456.0" onAction="#txtUnitPriceAction" onKeyReleased="#priceAction" prefHeight="32.0" prefWidth="196.0" style="-fx-border-color: black;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <Label fx:id="labelModel" alignment="CENTER_RIGHT" layoutX="528.0" layoutY="458.0" prefHeight="32.0" prefWidth="373.0" style="-fx-border-color: black;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="538.0" layoutY="391.0" prefHeight="16.0" prefWidth="62.0" text="Model">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtQty" layoutX="1213.0" layoutY="456.0" onAction="#qtyAction" onKeyReleased="#txtQtyAction" prefHeight="32.0" prefWidth="131.0" style="-fx-border-color: black;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TableView fx:id="purchaseTable" layoutX="40.0" layoutY="629.0" prefHeight="213.0" prefWidth="1304.0" stylesheets="@../css/table.css">
+               <columns>
+                  <TableColumn fx:id="colId" prefWidth="160.0" text="Item ID" />
+                  <TableColumn fx:id="colModel" prefWidth="351.0" text="Model" />
+                  <TableColumn fx:id="colUnitPrice" prefWidth="291.0" text="Unit Price" />
+                  <TableColumn fx:id="colQty" prefWidth="221.0" text="Quantity" />
+                  <TableColumn fx:id="colTotal" prefWidth="241.0" text="Total" />
+                  <TableColumn fx:id="colAction" prefWidth="35.0" />
+               </columns>
+            </TableView>
+            <Button alignment="CENTER" layoutX="1082.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnAddToTableAction" prefHeight="63.0" prefWidth="262.0" style="-fx-background-color: #1E90FF;" text="Add to Table" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-cart-30.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="1223.0" layoutY="391.0" prefHeight="16.0" prefWidth="88.0" text="Quantity">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="967.0" layoutY="391.0" prefHeight="21.0" prefWidth="131.0" text="Unit Price  Rs.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="245.0" layoutY="391.0" prefHeight="16.0" prefWidth="88.0" text="Item ID">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="28.0" prefHeight="32.0" prefWidth="196.0" text="New Purchase" textFill="DODGERBLUE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="42.0" layoutY="321.0" prefHeight="32.0" prefWidth="88.0" text="Items" textFill="DODGERBLUE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="735.0" layoutY="241.0" prefHeight="21.0" prefWidth="140.0" text="Supplier Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="98.0" layoutY="241.0" prefHeight="21.0" prefWidth="131.0" text="Supplier Tel:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="735.0" layoutY="141.0" prefHeight="21.0" prefWidth="140.0" text="Purchase Date">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelOwner" layoutX="289.0" layoutY="136.0" prefHeight="32.0" prefWidth="328.0" style="-fx-border-color: black;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="98.0" layoutY="142.0" prefHeight="21.0" prefWidth="119.0" text="Sales Owner">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="1067.5" layoutX="297.0" layoutY="427.0" startX="-277.5" stroke="#dad1d1" />
+            <Line endX="1135.5" endY="6.0" layoutX="228.0" layoutY="363.0" startX="-207.5" startY="6.0" />
+            <Line endX="1244.0" layoutX="120.0" layoutY="73.0" startX="-100.0" />
+            <TextField fx:id="txtSupplierTel" layoutX="289.0" layoutY="235.0" onAction="#txtSupplierTelAction" onKeyReleased="#txtTelAction" prefHeight="32.0" prefWidth="268.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btnScan" layoutX="72.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnScanAction" style="-fx-background-color: white;">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-qr-code-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="txtItemId" layoutX="230.0" layoutY="457.0" onAction="#txtItemIdAction" onKeyReleased="#txtQtyAction" prefHeight="32.0" prefWidth="131.0" style="-fx-border-color: black;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

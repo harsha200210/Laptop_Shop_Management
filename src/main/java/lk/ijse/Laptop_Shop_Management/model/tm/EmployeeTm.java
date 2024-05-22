@@ -1,2 +1,19 @@
-package lk.ijse.Laptop_Shop_Management.model.tm;public class EmployeeTm {
+package lk.ijse.Laptop_Shop_Management.model.tm;
+
+
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+
+public class EmployeeTm {
+    private String name;
+    private String nic;
+    private String address;
+    private String email;
+    private int tel;
+    private double salary;
 }

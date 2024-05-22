@@ -1,26 +1,105 @@
 package lk.ijse.Laptop_Shop_Management.controller;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import lk.ijse.Laptop_Shop_Management.model.Item;
+import lk.ijse.Laptop_Shop_Management.repository.ItemRepo;
+import lombok.Setter;
 
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 
-public class GenarateQrFormController {
+public class GenerateQrFormController {
 
+    @FXML
+    private Pane savePane;
+
+    @FXML
+    private TextField txtModel;
+
+    @FXML
+    private TextField txtQrName;
+
+    @Setter
     private ItemFormController itemFormController;
 
-    public void setItemFormController(ItemFormController itemFormController) {
-        this.itemFormController = itemFormController;
+    private Item item;
+
+    public void initialize(){
+        savePane.setVisible(false);
     }
 
     @FXML
     void backAction(MouseEvent event) {
         try {
             itemFormController.itemForm.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/view/item_form.fxml")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
+
+    @FXML
+    void btnGenerateQrAction(ActionEvent event) {
+        savePane.setVisible(false);
+        try {
+            item = ItemRepo.search(txtModel.getText());
+            if (item != null) {
+                savePane.setVisible(true);
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+    }
+
+    @FXML
+    void txtModelAction(ActionEvent event) {
+        btnGenerateQrAction(event);
+    }
+
+    @FXML
+    void btnSaveImageAction(ActionEvent event) {
+        saveQrImage();
+    }
+
+    @FXML
+    void txtQrNameAction(ActionEvent event) {
+        saveQrImage();
+    }
+
+    private void saveQrImage(){
+        if (!txtQrName.getText().equals("")){
+            String QR_CODE_IMAGE_PATH = "/home/harsha/Downloads/" + txtQrName.getText() + ".png";
+
+            try {
+                String text = String.valueOf(item.getId()); // Content for the QR code
+                int width = 300;
+                int height = 300;
+                String format = "png";
+
+                BitMatrix bitMatrix = new MultiFormatWriter().encode(text, BarcodeFormat.QR_CODE, width, height);
+                Path path = FileSystems.getDefault().getPath(QR_CODE_IMAGE_PATH);
+                MatrixToImageWriter.writeToPath(bitMatrix, format, path);
+                new Alert(Alert.AlertType.CONFIRMATION,"QR Code saved successfully.").show();
+            } catch (WriterException | IOException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
+            savePane.setVisible(false);
+            txtQrName.setText("");
+        } else {
+            new Alert(Alert.AlertType.INFORMATION,"Please enter QR Code Name").show();
+        }
+    }
+
 }
