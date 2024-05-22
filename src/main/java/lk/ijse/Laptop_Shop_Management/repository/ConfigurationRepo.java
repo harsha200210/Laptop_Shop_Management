@@ -29,7 +29,7 @@ public class ConfigurationRepo {
         return 0;
     }
 
-    private static int getCount() throws SQLException {
+    public static int getCount() throws SQLException {
         String sql = "SELECT COUNT(*) FROM configurations ORDER BY configuration_id";
 
         ResultSet resultSet = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery();
@@ -94,6 +94,32 @@ public class ConfigurationRepo {
 
         ResultSet resultSet = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery();
 
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
+    public static boolean addFilePath(String directoryPath) throws SQLException {
+        String sql = "INSERT INTO configurations (file_path) VALUES (?)";
+
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,directoryPath);
+        return statement.executeUpdate() > 0;
+    }
+
+    public static boolean updateFilePath(String directoryPath) throws SQLException {
+        String sql = "UPDATE configurations SET file_path = ? WHERE configuration_id = 1";
+
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,directoryPath);
+        return statement.executeUpdate() > 0;
+    }
+
+    public static String getFilePath() throws SQLException {
+        String sql = "SELECT file_path FROM configurations WHERE configuration_id = 1";
+
+        ResultSet resultSet = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery();
         if (resultSet.next()) {
             return resultSet.getString(1);
         }

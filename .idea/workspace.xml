@@ -4,18 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9562f587-9ed4-4d7c-95cd-9811a9c3fb39" name="Changes" comment="set push">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa/storage_v2/_src_/schema/laptop_shop.OzarBA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa/storage_v2/_src_/schema/laptop_shop.OzarBA.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/test/test.css" afterDir="false" />
+    <list default="true" id="9562f587-9ed4-4d7c-95cd-9811a9c3fb39" name="Changes" comment="delete test">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icon/icons8-folder-50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/GenerateQrFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/GenerateQrFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/ConfigurationRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/ConfigurationRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlDB/quries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlDB/quries.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/generateQr_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/generateQr_form.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,18 +46,18 @@
     </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "harsha200210"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;harsha200210&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/harsha200210/Laptop_Shop_Management.git",
-    "accountId": "58645dde-578e-4795-bf40-02117c2de8ee"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/harsha200210/Laptop_Shop_Management.git&quot;,
+    &quot;accountId&quot;: &quot;58645dde-578e-4795-bf40-02117c2de8ee&quot;
   }
-}]]></component>
+}</component>
   <component name="MigrationScriptOptions">
     <option name="ignoreImplicitObjects" value="true" />
     <option name="ignoreSourceCode" value="false" />
@@ -79,37 +77,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.BarCode.executor": "Run",
-    "Application.EncryptDecryptUtil.executor": "Run",
-    "Application.LauncherWrapper.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.QrCode.executor": "Run",
-    "Application.QrcodeReader.executor": "Run",
-    "JAR Application.Laptop_Shop_Management-shaded.jar.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/harsha/Documents/IJSE/IJSE_Projects/connect-four-game-assignment[2301691017]/connect-four-game-assignment",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.BarCode.executor&quot;: &quot;Run&quot;,
+    &quot;Application.EncryptDecryptUtil.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LauncherWrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.QrCode.executor&quot;: &quot;Run&quot;,
+    &quot;Application.QrcodeReader.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Laptop_Shop_Management-shaded.jar.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/harsha/Documents/IJSE/IJSE_Projects/connect-four-game-assignment[2301691017]/connect-four-game-assignment&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="lk.ijse.Laptop_Shop_Management" />
@@ -356,7 +354,8 @@
       <workItem from="1716227983053" duration="446000" />
       <workItem from="1716231198397" duration="1638000" />
       <workItem from="1716299383810" duration="1448000" />
-      <workItem from="1716350651047" duration="3509000" />
+      <workItem from="1716350651047" duration="3941000" />
+      <workItem from="1716388377657" duration="4480000" />
     </task>
     <task id="LOCAL-00001" summary="set push">
       <option name="closed" value="true" />
@@ -366,7 +365,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716353741885</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="create test">
+      <option name="closed" value="true" />
+      <created>1716355428085</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716355428086</updated>
+    </task>
+    <task id="LOCAL-00003" summary="delete test">
+      <option name="closed" value="true" />
+      <created>1716355515106</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716355515106</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,7 +390,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="set push" />
-    <option name="LAST_COMMIT_MESSAGE" value="set push" />
+    <MESSAGE value="create test" />
+    <MESSAGE value="delete test" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete test" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />

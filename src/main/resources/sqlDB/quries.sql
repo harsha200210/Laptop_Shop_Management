@@ -117,7 +117,8 @@ create table configurations(
                        configuration_id int auto_increment primary key ,
                        inside_colombo decimal(10,2),
                        out_of_colombo decimal(10,2),
-                       tax_rate int(5),
-                       first_order_id varchar(50)
+                       tax_rate decimal(5,2),
+                       first_order_id varchar(50),
+                       file_path varchar(100)
 );
 
