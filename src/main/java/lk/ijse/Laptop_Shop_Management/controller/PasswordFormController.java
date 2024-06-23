@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import lombok.Setter;
 
 
 public class PasswordFormController {
@@ -30,16 +31,17 @@ public class PasswordFormController {
     @FXML
     private AnchorPane passwordForm;
 
-    public static boolean isUser = false;
+    @Setter
+    private SettingFormController settingFormController;
 
     public void initialize(){
         setPP();
-        labelName.setText(LoginFormController.user.getUserName());
+        labelName.setText(LoginFormController.userDTO.getUserName());
 
     }
 
     private void setPP() {
-        Image image = new Image("file:" + LoginFormController.user.getView());
+        Image image = new Image("file:" + LoginFormController.userDTO.getView());
         imageView = new ImageView(image);
 
         Circle clip = new Circle();
@@ -59,14 +61,13 @@ public class PasswordFormController {
 
     @FXML
     void txtPasswordAction(ActionEvent event) {
-        if (txtPassword.getText().equals(LoginFormController.user.getPassword())){
-            isUser = true;
+        if (txtPassword.getText().equals(LoginFormController.userDTO.getPassword())){
+            settingFormController.NavigateUserSetting(true);
+            Stage stage = (Stage) this.passwordForm.getScene().getWindow();
+            stage.close();
         } else {
             new Alert(Alert.AlertType.WARNING,"Incorrect Password !!").show();
-            isUser = false;
         }
-        Stage stage = (Stage) this.passwordForm.getScene().getWindow();
-        stage.close();
     }
 
 }

@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -19,19 +18,19 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import lk.ijse.Laptop_Shop_Management.model.*;
-import lk.ijse.Laptop_Shop_Management.model.tm.CartTm;
-import lk.ijse.Laptop_Shop_Management.repository.*;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.OrderBO;
+import lk.ijse.Laptop_Shop_Management.dto.*;
+import lk.ijse.Laptop_Shop_Management.tdm.CartTm;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import lk.ijse.Laptop_Shop_Management.util.QrScanner;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
 import java.awt.image.BufferedImage;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -124,12 +123,13 @@ public class OrderFormController {
     @FXML
     private TextField txtItemId;
 
-    private Item item = new Item();
+    OrderBO orderBO = (OrderBO) BOFactory.getBO(BOFactory.BOType.ORDER);
 
-    public static Order order = new Order();
+    private ItemDTO itemDTO = new ItemDTO();
+    public static OrderDTO orderDTO = new OrderDTO();
 
     private ObservableList<CartTm> list = FXCollections.observableArrayList();
-    private Customer customer;
+    private CustomerDTO customer;
 
     public void initialize(){
         paneDriverID.setVisible(false);
@@ -142,12 +142,12 @@ public class OrderFormController {
     private void getOrderIDAndDate() {
         labelDate.setText(" " + MainFormController.date);
         try {
-            int count = OrderRepo.getOrderCount();
+            int count = orderBO.getOrderCount();
             if (count != 0){
-                String id = ConfigurationRepo.getFirstOrderId();
+                String id = orderBO.getFirstOrderId();
                 labelOrderID.setText(nextOrderId(id,count));
             } else {
-                if (ConfigurationRepo.setFirstOrderId(FirstOrderIdFormController.firstOrderId)){
+                if (orderBO.setFirstOrderId(FirstOrderIdFormController.firstOrderId)){
                     labelOrderID.setText(FirstOrderIdFormController.firstOrderId);
                 }
             }
@@ -168,11 +168,11 @@ public class OrderFormController {
 
     private void getOwnerAndCashier() {
         try {
-            labelOwner.setText(" " + UserRepo.getOwner());
+            labelOwner.setText(" " + orderBO.getOwner());
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
-            labelCashier.setText(" " + LoginFormController.user.getUserName());
+            labelCashier.setText(" " + LoginFormController.userDTO.getUserName());
     }
 
     @FXML
@@ -200,7 +200,7 @@ public class OrderFormController {
     void customerTelAction(ActionEvent event) {
         if (isValiedCustomerTel()){
             try {
-                customer = CustomerRepo.getCustomerName(txtCustomerTel.getText());
+                customer = orderBO.getCustomerName(txtCustomerTel.getText());
                 if (customer.getName() != null){
                     labelCustomerName.setText(" " + customer.getName());
                 } else {
@@ -223,11 +223,11 @@ public class OrderFormController {
     }
 
     private void clearData() {
-        txtQty.setText("");
+        txtQty.clear();
         labelModel.setText("");
         labelOnHandQty.setText("");
         labelUnitPrice.setText("");
-        txtItemId.setText("");
+        txtItemId.clear();
     }
 
     private void setNetTotal() {
@@ -285,20 +285,20 @@ public class OrderFormController {
         }
 
         for (int i = 0; i < orderTable.getItems().size(); i++){
-            if (item.getId() == ((Integer)colId.getCellData(i))){
+            if (itemDTO.getId() == ((Integer)colId.getCellData(i))){
                 CartTm tm = list.get(i);
 
                 qty += tm.getQty();
 
                 tm.setQty(qty);
-                tm.setTotal(qty * item.getPrice());
+                tm.setTotal(qty * itemDTO.getPrice());
 
                 orderTable.refresh();
                 return;
             }
         }
 
-        CartTm tm = new CartTm(item.getId(), item.getModel(), item.getPrice(), qty, (item.getPrice() * qty), button);
+        CartTm tm = new CartTm(itemDTO.getId(), itemDTO.getModel(), itemDTO.getPrice(), qty, (itemDTO.getPrice() * qty), button);
         list.add(tm);
         orderTable.setItems(list);
     }
@@ -319,30 +319,30 @@ public class OrderFormController {
     @FXML
     void btnPlaceToOrderAction(ActionEvent event) {
         if (isValiedCustomerTel()){
-            order = new Order(labelOrderID.getText(), Date.valueOf(LocalDate.now()),Double.parseDouble(labelNetTotal.getText()),customer.getId(),LoginFormController.user.getId());
+            orderDTO = new OrderDTO(labelOrderID.getText(), Date.valueOf(LocalDate.now()),Double.parseDouble(labelNetTotal.getText()),customer.getId(),LoginFormController.userDTO.getId());
 
-            List<ItemDetail> itemList = new ArrayList<>();
+            List<ItemDetailDTO> itemList = new ArrayList<>();
 
             for (int i = 0; i < orderTable.getItems().size(); i++) {
-                itemList.add(new ItemDetail(orderTable.getItems().get(i).getId(),labelOrderID.getText(),orderTable.getItems().get(i).getQty()));
+                itemList.add(new ItemDetailDTO(orderTable.getItems().get(i).getId(),labelOrderID.getText(),orderTable.getItems().get(i).getQty()));
             }
 
-            Delivery delivery = null;
+            DeliveryDTO deliveryDTO = null;
             int driverId = 0;
 
             try {
-                driverId = DriverRepo.getDriverId(driverNameBox.getValue());
+                driverId = orderBO.getDriverId(driverNameBox.getValue());
             } catch (Exception e) {
             }
 
             if (!labelDeliveryCharge.getText().equals("")){
-                delivery = new Delivery(Double.parseDouble(labelDeliveryCharge.getText()),labelOrderID.getText(),driverId);
+                deliveryDTO = new DeliveryDTO(Double.parseDouble(labelDeliveryCharge.getText()),labelOrderID.getText(),driverId);
             }
 
-            PlaceOrder placeOrder = new PlaceOrder(order,itemList,delivery);
+            PlaceOrder placeOrder = new PlaceOrder(orderDTO,itemList, deliveryDTO);
 
             try {
-                if (PlaceToOrderRepo.placeOrder(placeOrder)){
+                if (orderBO.placeOrder(placeOrder)){
                     //new Alert(Alert.AlertType.CONFIRMATION, "Order Placed Successfully !!").show();
                     navigatePayment();
                 } else {
@@ -394,7 +394,7 @@ public class OrderFormController {
 
     private void driverNameAdd() {
         try {
-            ObservableList<String> list = DriverRepo.getDriverName();
+            ObservableList<String> list = orderBO.getDriverName();
             driverNameBox.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -424,13 +424,15 @@ public class OrderFormController {
     @FXML
     void txtItemIdAction(ActionEvent event) {
         try {
-            item = ItemRepo.getItem(Integer.parseInt(txtItemId.getText()));
-            if (item != null) {
-                labelUnitPrice.setText(String.valueOf(item.getPrice()));
-                labelOnHandQty.setText(String.valueOf(item.getQty()));
-                labelModel.setText(item.getModel());
+            itemDTO = orderBO.getItem(Integer.parseInt(txtItemId.getText()));
+            if (itemDTO != null) {
+                labelUnitPrice.setText(String.valueOf(itemDTO.getPrice()));
+                labelOnHandQty.setText(String.valueOf(itemDTO.getQty()));
+                labelModel.setText(itemDTO.getModel());
+                txtQty.requestFocus();
             } else {
-                txtItemId.setText("");
+                clearData();
+                btnScan.requestFocus();
             }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -440,68 +442,26 @@ public class OrderFormController {
 
     @FXML
     void btnScanAction(ActionEvent event) {
-        startScanning();
-        txtQty.requestFocus();
-    }
-
-    private void startScanning() {
-        Webcam webcam = Webcam.getDefault();
-        if (webcam != null) {
-            webcam.setViewSize(WebcamResolution.VGA.getSize());
-            webcam.open();
-            if (webcam.isOpen()){
-                btnScan.setDisable(true);
-            }
-
-            new Thread(() -> {
-                while (true) {
-                    BufferedImage image = webcam.getImage();
-                    if (image != null) {
-                        try {
-                            String qrCodeData = readQRCode(image);
-                            if (qrCodeData != null) {
-                                Platform.runLater(() -> {
-                                    txtItemId.setText(qrCodeData);
-                                    try {
-                                        item = ItemRepo.getItem(Integer.parseInt(qrCodeData));
-                                        if (item != null){
-                                            labelUnitPrice.setText(String.valueOf(item.getPrice()));
-                                            labelOnHandQty.setText(String.valueOf(item.getQty()));
-                                            labelModel.setText(item.getModel());
-                                        } else {
-                                            txtItemId.setText("");
-                                        }
-                                    } catch (SQLException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                });
-                                webcam.close();
-                                if (!webcam.isOpen()){
-                                    btnScan.setDisable(false);
-                                }
-                                return; // Stop scanning once QR code is found
-                            }
-                        } catch (NotFoundException e) {
-                            // QR code not found in the current frame, continue scanning
-                        }
+        String qrCodeData = QrScanner.startScanning();
+        if (qrCodeData != null) {
+            Platform.runLater(() -> {
+                txtItemId.setText(qrCodeData);
+                try {
+                    itemDTO = orderBO.getItem(Integer.parseInt(qrCodeData));
+                    if (itemDTO != null){
+                        labelUnitPrice.setText(String.valueOf(itemDTO.getPrice()));
+                        labelOnHandQty.setText(String.valueOf(itemDTO.getQty()));
+                        labelModel.setText(itemDTO.getModel());
+                        txtQty.requestFocus();
+                    } else {
+                        clearData();
+                        btnScan.requestFocus();
                     }
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
                 }
-            }).start();
-        } else {
-            System.err.println("No webcam detected!");
+            });
         }
-    }
-
-    private String readQRCode(BufferedImage image) throws NotFoundException {
-        Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
-        hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-
-        BinaryBitmap binaryBitmap = new BinaryBitmap(
-                new HybridBinarizer(new BufferedImageLuminanceSource(image)));
-        MultiFormatReader reader = new MultiFormatReader();
-        Result result = reader.decode(binaryBitmap, hints);
-
-        return result.getText();
     }
 
     @FXML
@@ -509,7 +469,7 @@ public class OrderFormController {
         insideCheckBox.setSelected(true);
         outCheckBox.setSelected(false);
         try {
-            labelDeliveryCharge.setText(String.valueOf(ConfigurationRepo.getInsideChange()));
+            labelDeliveryCharge.setText(String.valueOf(orderBO.getInsideChange()));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -520,7 +480,7 @@ public class OrderFormController {
         outCheckBox.setSelected(true);
         insideCheckBox.setSelected(false);
         try {
-            labelDeliveryCharge.setText(String.valueOf(ConfigurationRepo.getOutSideChage()));
+            labelDeliveryCharge.setText(String.valueOf(orderBO.getOutSideCharge()));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

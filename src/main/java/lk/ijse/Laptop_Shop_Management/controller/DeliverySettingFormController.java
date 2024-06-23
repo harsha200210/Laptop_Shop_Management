@@ -5,10 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import lk.ijse.Laptop_Shop_Management.repository.ConfigurationRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.DeliverySettingBO;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
-
-import java.sql.SQLException;
 
 public class DeliverySettingFormController {
 
@@ -18,10 +17,12 @@ public class DeliverySettingFormController {
     @FXML
     private TextField txtOutOfColombo;
 
+    DeliverySettingBO deliverySettingBO = (DeliverySettingBO) BOFactory.getBO(BOFactory.BOType.DELIVERYSETTING);
+
     public void initialize(){
         try {
-            txtInsideColombo.setText(String.valueOf(ConfigurationRepo.getInsideChange()));
-            txtOutOfColombo.setText(String.valueOf(ConfigurationRepo.getOutSideChage()));
+            txtInsideColombo.setText(String.valueOf(deliverySettingBO.getInsideChange()));
+            txtOutOfColombo.setText(String.valueOf(deliverySettingBO.getOutSideChage()));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -35,13 +36,13 @@ public class DeliverySettingFormController {
 
 
             try {
-                if (ConfigurationRepo.changeDeliveryCharge(inside,out)){
+                if (deliverySettingBO.changeDeliveryCharge(inside,out)){
                     new Alert(Alert.AlertType.CONFIRMATION, "Change Successfully !!!").show();
                     clear();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Change Unsuccessfully !!!").show();
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
         }

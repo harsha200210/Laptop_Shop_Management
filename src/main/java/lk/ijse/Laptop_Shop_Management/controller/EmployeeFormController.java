@@ -8,12 +8,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import lk.ijse.Laptop_Shop_Management.model.Employee;
-import lk.ijse.Laptop_Shop_Management.model.Salary;
-import lk.ijse.Laptop_Shop_Management.model.tm.EmployeeTm;
-import lk.ijse.Laptop_Shop_Management.repository.ConfigurationRepo;
-import lk.ijse.Laptop_Shop_Management.repository.EmployeeRepo;
-import lk.ijse.Laptop_Shop_Management.repository.SalaryRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.EmployeeBO;
+import lk.ijse.Laptop_Shop_Management.dao.custom.impl.EmployeeDAOImpl;
+import lk.ijse.Laptop_Shop_Management.dto.EmployeeDTO;
+import lk.ijse.Laptop_Shop_Management.dto.SalaryDTO;
+import lk.ijse.Laptop_Shop_Management.tdm.EmployeeTm;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
 import java.sql.SQLException;
@@ -62,6 +62,8 @@ public class EmployeeFormController {
     @FXML
     private TextField txtTel;
 
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBO(BOFactory.BOType.EMPLOYEE);
+
     public void initialize(){
         loadAllEmployee();
         setCellValueFactory();
@@ -84,8 +86,8 @@ public class EmployeeFormController {
     @FXML
     void btnDeleteAction(ActionEvent event) {
         try {
-            if (EmployeeRepo.checkId(txtNic.getText())){
-                if (EmployeeRepo.delete(txtNic.getText())){
+            if (employeeBO.checkId(txtNic.getText())){
+                if (employeeBO.delete(txtNic.getText())){
                     new Alert(Alert.AlertType.CONFIRMATION,"Employee Deleted!").show();
                     loadAllEmployee();
                     setNullValue();
@@ -100,9 +102,9 @@ public class EmployeeFormController {
     void btnSaveAction(ActionEvent event) {
         if (isValied()){
             try {
-                Employee employee = getValues();
-                Salary salary = getData();
-                if (EmployeeRepo.save(employee,salary)){
+                EmployeeDTO employeeDTO = getValues();
+                SalaryDTO salaryDTO = getData();
+                if (employeeBO.save(employeeDTO, salaryDTO)){
                     new Alert(Alert.AlertType.CONFIRMATION,"Employee Saved!").show();
                     loadAllEmployee();
                     setNullValue();
@@ -113,27 +115,27 @@ public class EmployeeFormController {
         }
     }
 
-    private Salary getData() throws SQLException {
+    private SalaryDTO getData() throws SQLException, ClassNotFoundException {
         double salary = Double.parseDouble(txtSalary.getText());
-        double taxRate = ConfigurationRepo.getTaxRate();
+        double taxRate = employeeBO.getTaxRate();
         double tax =  salary * (taxRate /100);
         double etf = salary * ((double) 3 /100);
         double epf = salary * ((double) 20 /100);
-        return new Salary(salary,tax,etf,epf);
+        return new SalaryDTO(salary,tax,etf,epf);
     }
 
-    private Employee getValues() {
-        return new Employee(0,txtName.getText(),txtNic.getText(),txtAddress.getText(),txtEmail.getText(),Integer.parseInt(txtTel.getText()),LoginFormController.user.getId(), "");
+    private EmployeeDTO getValues() {
+        return new EmployeeDTO(0,txtName.getText(),txtNic.getText(),txtAddress.getText(),txtEmail.getText(),Integer.parseInt(txtTel.getText()),LoginFormController.userDTO.getId(), "");
     }
 
     @FXML
     void btnUpdateAction(ActionEvent event) {
         try {
-            Employee employee = getValues();
-            Salary salary = getData();
-            if (EmployeeRepo.checkId(employee.getNic())){
-                updateValues(employee);
-                if (EmployeeRepo.update(salary)){
+            EmployeeDTO employeeDTO = getValues();
+            SalaryDTO salaryDTO = getData();
+            if (employeeBO.checkId(employeeDTO.getNic())){
+                updateValues(employeeDTO);
+                if (employeeBO.updateSalary(salaryDTO)){
                     new Alert(Alert.AlertType.CONFIRMATION,"Employee Updated!").show();
                     setNullValue();
                     loadAllEmployee();
@@ -144,18 +146,18 @@ public class EmployeeFormController {
         }
     }
 
-    private void updateValues(Employee employee) {
-        if (!employee.getName().equals("") && !employee.getName().equals(EmployeeRepo.employee.getName())){
-            EmployeeRepo.employee.setName(employee.getName());
+    private void updateValues(EmployeeDTO employeeDTO) {
+        if (!employeeDTO.getName().equals("") && !employeeDTO.getName().equals(EmployeeDAOImpl.employee.getName())){
+            EmployeeDAOImpl.employee.setName(employeeDTO.getName());
         }
-        if (!employee.getAddress().equals("") && !employee.getAddress().equals(EmployeeRepo.employee.getAddress())){
-            EmployeeRepo.employee.setAddress(employee.getAddress());
+        if (!employeeDTO.getAddress().equals("") && !employeeDTO.getAddress().equals(EmployeeDAOImpl.employee.getAddress())){
+            EmployeeDAOImpl.employee.setAddress(employeeDTO.getAddress());
         }
-        if (!employee.getEmail().equals("") && !employee.getEmail().equals(EmployeeRepo.employee.getEmail())){
-            EmployeeRepo.employee.setEmail(employee.getEmail());
+        if (!employeeDTO.getEmail().equals("") && !employeeDTO.getEmail().equals(EmployeeDAOImpl.employee.getEmail())){
+            EmployeeDAOImpl.employee.setEmail(employeeDTO.getEmail());
         }
-        if (employee.getTel() != 0 && employee.getTel() != EmployeeRepo.employee.getTel()){
-            EmployeeRepo.employee.setTel(employee.getTel());
+        if (employeeDTO.getTel() != 0 && employeeDTO.getTel() != EmployeeDAOImpl.employee.getTel()){
+            EmployeeDAOImpl.employee.setTel(employeeDTO.getTel());
         }
 
     }
@@ -165,28 +167,28 @@ public class EmployeeFormController {
         searchAction(event);
     }
 
-    private void setValues(Employee employee) {
-            txtNic.setText(employee.getNic());
-            txtName.setText(employee.getName());
-            txtAddress.setText(employee.getAddress());
-            txtEmail.setText(employee.getEmail());
-            txtTel.setText(String.valueOf(employee.getTel()));
+    private void setValues(EmployeeDTO employeeDTO) {
+            txtNic.setText(employeeDTO.getNic());
+            txtName.setText(employeeDTO.getName());
+            txtAddress.setText(employeeDTO.getAddress());
+            txtEmail.setText(employeeDTO.getEmail());
+            txtTel.setText(String.valueOf(employeeDTO.getTel()));
         try {
-            txtSalary.setText(SalaryRepo.getSalary(employee.getId()));
+            txtSalary.setText(employeeBO.getSalary(employeeDTO.getId()));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
 
-    private void setTable(Employee employee) {
+    private void setTable(EmployeeDTO employeeDTO) {
         ObservableList<EmployeeTm> obList = FXCollections.observableArrayList();
         double salary = 0;
         try {
-            salary = Double.parseDouble(SalaryRepo.getSalary(employee.getId()));
+            salary = Double.parseDouble(employeeBO.getSalary(employeeDTO.getId()));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
-        EmployeeTm tm = new EmployeeTm(employee.getName(), employee.getNic(), employee.getAddress(), employee.getEmail(), employee.getTel() , salary);
+        EmployeeTm tm = new EmployeeTm(employeeDTO.getName(), employeeDTO.getNic(), employeeDTO.getAddress(), employeeDTO.getEmail(), employeeDTO.getTel() , salary);
         obList.add(tm);
         employeeTable.setItems(obList);
     }
@@ -204,10 +206,10 @@ public class EmployeeFormController {
     void searchAction(ActionEvent event) {
         if (searchValid()){
             try {
-                Employee employee = EmployeeRepo.search(txtSearch.getText());
-                if (employee != null){
-                    setValues(employee);
-                    setTable(employee);
+                EmployeeDTO employeeDTO = employeeBO.search(txtSearch.getText());
+                if (employeeDTO != null){
+                    setValues(employeeDTO);
+                    setTable(employeeDTO);
                 } else {
                     setNullValue();
                 }
@@ -219,7 +221,7 @@ public class EmployeeFormController {
     private void loadAllEmployee(){
         ObservableList<EmployeeTm> obList = FXCollections.observableArrayList();
         try {
-            obList = EmployeeRepo.getEmployee();
+            obList = employeeBO.getEmployee();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

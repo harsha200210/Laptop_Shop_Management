@@ -9,8 +9,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import lk.ijse.Laptop_Shop_Management.model.tm.SupplierItemTm;
-import lk.ijse.Laptop_Shop_Management.repository.ItemSupplierRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.BuyingListBO;
+import lk.ijse.Laptop_Shop_Management.tdm.SupplierItemTm;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
 
@@ -37,6 +38,8 @@ public class BuyingListFormController {
     @FXML
     private TextField txtSearch;
 
+    BuyingListBO buyingListBO = (BuyingListBO) BOFactory.getBO(BOFactory.BOType.BUYINGLIST);
+
     private ObservableList<SupplierItemTm> list;
 
     public void initialize(){
@@ -46,7 +49,7 @@ public class BuyingListFormController {
 
     private void loadSupplierItemData() {
         try {
-            list = ItemSupplierRepo.getSupplierItem();
+            list = buyingListBO.getSupplierItem();
             supplierItemTable.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -70,7 +73,7 @@ public class BuyingListFormController {
     void searchAction(ActionEvent event) {
         if (searchValid()){
             try {
-                ObservableList<SupplierItemTm> list = ItemSupplierRepo.getSupplierItem(Integer.parseInt(txtSearch.getText()));
+                ObservableList<SupplierItemTm> list = buyingListBO.getSupplierItem(Integer.parseInt(txtSearch.getText()));
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

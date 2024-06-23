@@ -17,8 +17,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import lk.ijse.Laptop_Shop_Management.model.User;
-import lk.ijse.Laptop_Shop_Management.repository.UserRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.SignUpBO;
+import lk.ijse.Laptop_Shop_Management.dto.UserDTO;
 import lk.ijse.Laptop_Shop_Management.util.PasswordStorage;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
@@ -48,7 +49,9 @@ public class SignUpFormController {
     @FXML
     private CheckBox ownerCheckBox;
 
-    private User user = new User();
+    SignUpBO signUpBO = (SignUpBO) BOFactory.getBO(BOFactory.BOType.SIGNUP);
+
+    private UserDTO userDTO = new UserDTO();
 
     public void initialize(){
         txtUserName.requestFocus();
@@ -57,11 +60,11 @@ public class SignUpFormController {
     @FXML
     void btnSignUpAction(ActionEvent event) {
         if (isValied()){
-            user.setUserName(txtUserName.getText());
+            userDTO.setUserName(txtUserName.getText());
             setPassword();
 
             try {
-                boolean isSave = UserRepo.save(user);
+                boolean isSave = signUpBO.save(userDTO);
                 if (isSave){
                     new Alert(Alert.AlertType.CONFIRMATION,"Save Successfully").show();
 
@@ -75,7 +78,7 @@ public class SignUpFormController {
 
     private void setPassword() {
         String password = PasswordStorage.hashPassword(txtPassword.getText());
-        user.setPassword(password);
+        userDTO.setPassword(password);
     }
 
     private void navigateToTheLoginForm() throws IOException {
@@ -99,14 +102,14 @@ public class SignUpFormController {
     void cashierAction(ActionEvent event) {
         cashierCheckBox.setSelected(true);
         ownerCheckBox.setSelected(false);
-        user.setType("Cashier");
+        userDTO.setType("Cashier");
     }
 
     @FXML
     void ownerAction(ActionEvent event) {
         ownerCheckBox.setSelected(true);
         cashierCheckBox.setSelected(false);
-        user.setType("Owner");
+        userDTO.setType("Owner");
     }
 
     @FXML
@@ -139,7 +142,7 @@ public class SignUpFormController {
             imageViewPP.setClip(clip);
 
             String profilePicturePath = selectedFile.getAbsolutePath();
-            user.setView(profilePicturePath);
+            userDTO.setView(profilePicturePath);
         }
     }
 

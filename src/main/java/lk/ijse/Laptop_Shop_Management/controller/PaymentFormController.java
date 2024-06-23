@@ -4,16 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.PaymentBO;
 import lk.ijse.Laptop_Shop_Management.db.DbConnection;
-import lk.ijse.Laptop_Shop_Management.model.Payment;
-import lk.ijse.Laptop_Shop_Management.repository.PaymentRepo;
+import lk.ijse.Laptop_Shop_Management.dto.PaymentDTO;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 import lombok.Setter;
 import net.sf.jasperreports.engine.*;
@@ -52,6 +50,8 @@ public class PaymentFormController {
     @Setter
     private OrderFormController orderFormController;
 
+    PaymentBO paymentBO = (PaymentBO) BOFactory.getBO(BOFactory.BOType.PAYMENT);
+
     public void initialize(){
         btnPay.setVisible(false);
         addPaymentType();
@@ -59,7 +59,7 @@ public class PaymentFormController {
     }
 
     private void getNetTotal() {
-        netTotalLabel.setText(String.valueOf(OrderFormController.order.getPrice()));
+        netTotalLabel.setText(String.valueOf(OrderFormController.orderDTO.getPrice()));
     }
 
     private void addPaymentType() {
@@ -72,9 +72,9 @@ public class PaymentFormController {
 
     @FXML
     void btnCompleteAction(ActionEvent event) {
-        Payment payment = new Payment(typeBox.getValue(), Date.valueOf(LocalDate.now()),OrderFormController.order.getOrderId());
+        PaymentDTO paymentDTO = new PaymentDTO(typeBox.getValue(), Date.valueOf(LocalDate.now()),OrderFormController.orderDTO.getOrderId());
         try {
-            if (PaymentRepo.save(payment)){
+            if (paymentBO.save(paymentDTO)){
                 orderFormController.btnNewOrder(event);
                 closeStage();
                 printBill();
@@ -94,7 +94,7 @@ public class PaymentFormController {
 
 
             Map<String,Object> data = new HashMap<>();
-            data.put("OrderId",OrderFormController.order.getOrderId());
+            data.put("OrderId",OrderFormController.orderDTO.getOrderId());
 
             JasperPrint jasperPrint =
                     JasperFillManager.fillReport(jasperReport, data, DbConnection.getInstance().getConnection());
@@ -117,9 +117,9 @@ public class PaymentFormController {
 
     @FXML
     void txtCashAction(ActionEvent event) {
-        if (isValied()){
-            double balacnce  = Double.parseDouble(txtCash.getText()) - Double.parseDouble(netTotalLabel.getText());
-            balanceLabel.setText(String.valueOf(balacnce));
+        if (isValid()){
+            double balance  = Double.parseDouble(txtCash.getText()) - Double.parseDouble(netTotalLabel.getText());
+            balanceLabel.setText(String.valueOf(balance));
         }
     }
 
@@ -134,7 +134,7 @@ public class PaymentFormController {
         }
     }
 
-    public boolean isValied() {
+    public boolean isValid() {
         if (!Regex.setTextColor(lk.ijse.Laptop_Shop_Management.util.TextField.PRICE, txtCash)) return false;
         return true;
     }

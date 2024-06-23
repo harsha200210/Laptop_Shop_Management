@@ -13,8 +13,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
-import lk.ijse.Laptop_Shop_Management.model.User;
-import lk.ijse.Laptop_Shop_Management.repository.UserRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.UserSettingBO;
+import lk.ijse.Laptop_Shop_Management.dto.UserDTO;
 import lk.ijse.Laptop_Shop_Management.util.PasswordStorage;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
@@ -37,14 +38,16 @@ public class UserSettingFormController {
     @FXML
     private AnchorPane userSettingForm;
 
+    UserSettingBO userSettingBO = (UserSettingBO) BOFactory.getBO(BOFactory.BOType.USERSETTING);
+
     public void initialize() {
         setPP();
-        txtUserName.setText(LoginFormController.user.getUserName());
-        txtPassword.setText(LoginFormController.user.getPassword());
+        txtUserName.setText(LoginFormController.userDTO.getUserName());
+        txtPassword.setText(LoginFormController.userDTO.getPassword());
     }
 
     private void setPP() {
-        Image image = new Image("file:" + LoginFormController.user.getView());
+        Image image = new Image("file:" + LoginFormController.userDTO.getView());
         imageViewPP = new ImageView(image);
 
         Circle clip = new Circle();
@@ -79,23 +82,23 @@ public class UserSettingFormController {
             imageViewPP.setImage(image);
 
             String profilePicturePath = selectedFile.getAbsolutePath();
-            LoginFormController.user.setView(profilePicturePath);
+            LoginFormController.userDTO.setView(profilePicturePath);
         }
     }
     @FXML
     void btnSaveAction(ActionEvent event) {
         if (isValied()){
             if (!txtUserName.getText().equals("")){
-                LoginFormController.user.setUserName(txtUserName.getText());
+                LoginFormController.userDTO.setUserName(txtUserName.getText());
             }
             if (!txtPassword.getText().equals("")){
-                LoginFormController.user.setPassword(txtPassword.getText());
+                LoginFormController.userDTO.setPassword(txtPassword.getText());
             }
 
             try {
-                User user = LoginFormController.user;
-                user.setPassword(getPassword());
-                if (UserRepo.updateUser(user)){
+                UserDTO userDTO = LoginFormController.userDTO;
+                userDTO.setPassword(getPassword());
+                if (userSettingBO.updateUser(userDTO)){
                     new Alert(Alert.AlertType.CONFIRMATION, "User Updated !!").show();
                 }
             } catch (Exception e) {
@@ -105,7 +108,7 @@ public class UserSettingFormController {
     }
 
     private String getPassword(){
-        return PasswordStorage.hashPassword(LoginFormController.user.getPassword());
+        return PasswordStorage.hashPassword(LoginFormController.userDTO.getPassword());
     }
 
     @FXML

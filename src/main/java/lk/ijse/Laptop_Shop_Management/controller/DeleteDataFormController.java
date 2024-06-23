@@ -10,9 +10,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.Laptop_Shop_Management.model.tm.DriverTm;
-import lk.ijse.Laptop_Shop_Management.model.tm.ItemTm;
-import lk.ijse.Laptop_Shop_Management.repository.*;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.*;
+import lk.ijse.Laptop_Shop_Management.bo.custom.impl.*;
+import lk.ijse.Laptop_Shop_Management.tdm.DriverTm;
+import lk.ijse.Laptop_Shop_Management.tdm.ItemTm;
 
 
 public class DeleteDataFormController {
@@ -53,6 +55,8 @@ public class DeleteDataFormController {
     @FXML
     private TableView<DriverTm> tableModel;
 
+    DeleteDataBO deleteDataBO = (DeleteDataBO) BOFactory.getBO(BOFactory.BOType.DELETEDATA);
+
     public void initialize(){
         getDataType();
         setCellValueFactory();
@@ -71,7 +75,7 @@ public class DeleteDataFormController {
 
     private void getDataType() {
         ObservableList<String> list = FXCollections.observableArrayList();
-        list.add("Customer");
+        list.add("CustomerDTO");
         list.add("Item");
         list.add("Supplier");
         list.add("Employee");
@@ -82,7 +86,7 @@ public class DeleteDataFormController {
     @FXML
     void deleteDataBoxAction(ActionEvent event) {
         switch (deleteDataBox.getValue()){
-            case "Customer" :
+            case "CustomerDTO" :
                 setCustomers();
                 break;
             case "Item" :
@@ -105,7 +109,7 @@ public class DeleteDataFormController {
         itemTable.setVisible(false);
         tableModel.setVisible(true);
         try {
-            ObservableList<DriverTm> list = DriverRepo.getDeleteDrivers();
+            ObservableList<DriverTm> list = deleteDataBO.getDeleteDrivers();
             tableModel.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -116,7 +120,7 @@ public class DeleteDataFormController {
         itemTable.setVisible(false);
         tableModel.setVisible(true);
         try {
-            ObservableList<DriverTm> list = EmployeeRepo.getDeleteEmployee();
+            ObservableList<DriverTm> list = deleteDataBO.getDeleteEmployee();
             tableModel.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -127,7 +131,7 @@ public class DeleteDataFormController {
         itemTable.setVisible(false);
         tableModel.setVisible(true);
         try {
-            ObservableList<DriverTm> list = SupplierRepo.getDeleteSupplier();
+            ObservableList<DriverTm> list = deleteDataBO.getDeleteSupplier();
             tableModel.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -138,7 +142,7 @@ public class DeleteDataFormController {
         itemTable.setVisible(true);
         tableModel.setVisible(false);
         try {
-            ObservableList<ItemTm> list = ItemRepo.getDeleteItem();
+            ObservableList<ItemTm> list = deleteDataBO.getDeleteItem();
             itemTable.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -149,7 +153,7 @@ public class DeleteDataFormController {
         itemTable.setVisible(false);
         tableModel.setVisible(true);
         try {
-            ObservableList<DriverTm> list = CustomerRepo.getDeleteCustomer();
+            ObservableList<DriverTm> list = deleteDataBO.getDeleteCustomer();
             tableModel.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

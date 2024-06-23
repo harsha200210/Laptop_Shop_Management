@@ -8,9 +8,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import lk.ijse.Laptop_Shop_Management.model.Supplier;
-import lk.ijse.Laptop_Shop_Management.model.tm.SupplierTm;
-import lk.ijse.Laptop_Shop_Management.repository.SupplierRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.SupplierBO;
+import lk.ijse.Laptop_Shop_Management.dao.custom.impl.SupplierDAOImpl;
+import lk.ijse.Laptop_Shop_Management.dto.SupplierDTO;
+import lk.ijse.Laptop_Shop_Management.tdm.SupplierTm;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
 
@@ -52,6 +54,8 @@ public class SupplierFormController {
     @FXML
     private TextField txtTel;
 
+    SupplierBO supplierBO = (SupplierBO) BOFactory.getBO(BOFactory.BOType.SUPPLIER);
+
     public void initialize(){
         setCellValueFactory();
         loadAllSupplier();
@@ -73,8 +77,8 @@ public class SupplierFormController {
     @FXML
     void btnDeleteAction(ActionEvent event) {
         try {
-            if (SupplierRepo.checkId(txtNic.getText())){
-                if (SupplierRepo.delete(txtNic.getText())){
+            if (supplierBO.checkId(txtNic.getText())){
+                if (supplierBO.delete(txtNic.getText())){
                     new Alert(Alert.AlertType.CONFIRMATION,"Supplier Deleted!").show();
                     loadAllSupplier();
                     setNullValue();
@@ -89,8 +93,8 @@ public class SupplierFormController {
     void btnSaveAction(ActionEvent event) {
         if (isValied()){
             try {
-                Supplier supplier = getValues();
-                if (SupplierRepo.save(supplier)){
+                SupplierDTO supplierDTO = getValues();
+                if (supplierBO.save(supplierDTO)){
                     new Alert(Alert.AlertType.CONFIRMATION,"Supplier Saved!").show();
                     loadAllSupplier();
                     setNullValue();
@@ -101,17 +105,17 @@ public class SupplierFormController {
         }
     }
 
-    private Supplier getValues() {
-        return new Supplier(0,txtName.getText(),txtNic.getText(),txtAddress.getText(),txtEmail.getText(),Integer.parseInt(txtTel.getText()),"");
+    private SupplierDTO getValues() {
+        return new SupplierDTO(0,txtName.getText(),txtNic.getText(),txtAddress.getText(),txtEmail.getText(),Integer.parseInt(txtTel.getText()),"");
     }
 
     @FXML
     void btnUpdateAction(ActionEvent event) {
         try {
-            Supplier supplier = getValues();
-            if (SupplierRepo.checkId(supplier.getNic())){
-                updateValues(supplier);
-                if (SupplierRepo.update()){
+            SupplierDTO supplierDTO = getValues();
+            if (supplierBO.checkId(supplierDTO.getNic())){
+                updateValues(supplierDTO);
+                if (supplierBO.update()){
                     new Alert(Alert.AlertType.CONFIRMATION,"Supplier Updated!").show();
                     setNullValue();
                     loadAllSupplier();
@@ -122,18 +126,18 @@ public class SupplierFormController {
         }
     }
 
-    private void updateValues(Supplier supplier) {
-        if (!supplier.getName().equals("") && !supplier.getName().equals(SupplierRepo.supplier.getName())){
-            SupplierRepo.supplier.setName(supplier.getName());
+    private void updateValues(SupplierDTO supplierDTO) {
+        if (!supplierDTO.getName().equals("") && !supplierDTO.getName().equals(SupplierDAOImpl.supplier.getName())){
+            SupplierDAOImpl.supplier.setName(supplierDTO.getName());
         }
-        if (!supplier.getAddress().equals("") && !supplier.getAddress().equals(SupplierRepo.supplier.getAddress())){
-            SupplierRepo.supplier.setAddress(supplier.getAddress());
+        if (!supplierDTO.getAddress().equals("") && !supplierDTO.getAddress().equals(SupplierDAOImpl.supplier.getAddress())){
+            SupplierDAOImpl.supplier.setAddress(supplierDTO.getAddress());
         }
-        if (!supplier.getEmail().equals("") && !supplier.getEmail().equals(SupplierRepo.supplier.getEmail())){
-            SupplierRepo.supplier.setEmail(supplier.getEmail());
+        if (!supplierDTO.getEmail().equals("") && !supplierDTO.getEmail().equals(SupplierDAOImpl.supplier.getEmail())){
+            SupplierDAOImpl.supplier.setEmail(supplierDTO.getEmail());
         }
-        if (supplier.getTel() != 0 && supplier.getTel() != SupplierRepo.supplier.getTel()){
-            SupplierRepo.supplier.setTel(supplier.getTel());
+        if (supplierDTO.getTel() != 0 && supplierDTO.getTel() != SupplierDAOImpl.supplier.getTel()){
+            SupplierDAOImpl.supplier.setTel(supplierDTO.getTel());
         }
     }
 
@@ -142,19 +146,19 @@ public class SupplierFormController {
         searchAction(event);
     }
 
-    private void setTable(Supplier supplier) {
+    private void setTable(SupplierDTO supplierDTO) {
         ObservableList<SupplierTm> obList = FXCollections.observableArrayList();
-        SupplierTm tm = new SupplierTm(supplier.getName(), supplier.getNic(), supplier.getAddress(), supplier.getEmail(), supplier.getTel());
+        SupplierTm tm = new SupplierTm(supplierDTO.getName(), supplierDTO.getNic(), supplierDTO.getAddress(), supplierDTO.getEmail(), supplierDTO.getTel());
         obList.add(tm);
         supplierTable.setItems(obList);
     }
 
-    private void setValues(Supplier supplier) {
-            txtNic.setText(supplier.getNic());
-            txtName.setText(supplier.getName());
-            txtAddress.setText(supplier.getAddress());
-            txtEmail.setText(supplier.getEmail());
-            txtTel.setText(String.valueOf(supplier.getTel()));
+    private void setValues(SupplierDTO supplierDTO) {
+            txtNic.setText(supplierDTO.getNic());
+            txtName.setText(supplierDTO.getName());
+            txtAddress.setText(supplierDTO.getAddress());
+            txtEmail.setText(supplierDTO.getEmail());
+            txtTel.setText(String.valueOf(supplierDTO.getTel()));
 
     }
 
@@ -170,10 +174,10 @@ public class SupplierFormController {
     void searchAction(ActionEvent event) {
         if (searchValid()){
             try {
-                Supplier supplier = SupplierRepo.search(txtSearch.getText());
-                if (supplier != null){
-                    setValues(supplier);
-                    setTable(supplier);
+                SupplierDTO supplierDTO = supplierBO.search(txtSearch.getText());
+                if (supplierDTO != null){
+                    setValues(supplierDTO);
+                    setTable(supplierDTO);
                 } else {
                     setNullValue();
                 }
@@ -185,7 +189,7 @@ public class SupplierFormController {
     private void loadAllSupplier(){
         ObservableList<SupplierTm> obList = FXCollections.observableArrayList();
         try {
-            obList = SupplierRepo.getSupplier();
+            obList = supplierBO.getSupplier();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

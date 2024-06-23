@@ -10,11 +10,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import lk.ijse.Laptop_Shop_Management.model.tm.OrderItemTm;
-import lk.ijse.Laptop_Shop_Management.model.tm.OrderListTm;
-import lk.ijse.Laptop_Shop_Management.repository.ItemDetailsRepo;
-import lk.ijse.Laptop_Shop_Management.repository.OrderRepo;
-
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.OrderListBO;
+import lk.ijse.Laptop_Shop_Management.tdm.OrderItemTm;
+import lk.ijse.Laptop_Shop_Management.tdm.OrderListTm;
 
 public class OrderListFormController {
 
@@ -51,6 +50,8 @@ public class OrderListFormController {
     @FXML
     private TextField txtSearch;
 
+    OrderListBO orderListBO = (OrderListBO) BOFactory.getBO(BOFactory.BOType.ORDERLIST);
+
     private ObservableList<OrderListTm> orderList;
     private ObservableList<OrderItemTm> itemList;
 
@@ -62,7 +63,7 @@ public class OrderListFormController {
 
     private void loadItemDetails() {
         try {
-            itemList = ItemDetailsRepo.getItems();
+            itemList = orderListBO.getItems();
             OrderItemTable.setItems(itemList);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -71,7 +72,7 @@ public class OrderListFormController {
 
     private void loadOrderDetails() {
         try {
-            orderList = OrderRepo.getOrders();
+            orderList = orderListBO.getOrders();
             orderTable.setItems(orderList);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -120,7 +121,7 @@ public class OrderListFormController {
         OrderListTm selectedItem = orderTable.getSelectionModel().getSelectedItem();
 
         try {
-            ObservableList<OrderItemTm> list = ItemDetailsRepo.getItem(selectedItem.getOrderId());
+            ObservableList<OrderItemTm> list = orderListBO.getItem(selectedItem.getOrderId());
             OrderItemTable.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();

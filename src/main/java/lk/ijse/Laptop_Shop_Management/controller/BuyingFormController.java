@@ -20,22 +20,19 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import lk.ijse.Laptop_Shop_Management.model.Item;
-import lk.ijse.Laptop_Shop_Management.model.ItemSupplier;
-import lk.ijse.Laptop_Shop_Management.model.Supplier;
-import lk.ijse.Laptop_Shop_Management.model.tm.CartTm;
-import lk.ijse.Laptop_Shop_Management.repository.BuyItemsRepo;
-import lk.ijse.Laptop_Shop_Management.repository.ItemRepo;
-import lk.ijse.Laptop_Shop_Management.repository.SupplierRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.BuyingBO;
+import lk.ijse.Laptop_Shop_Management.dto.ItemDTO;
+import lk.ijse.Laptop_Shop_Management.dto.ItemSupplierDTO;
+import lk.ijse.Laptop_Shop_Management.dto.SupplierDTO;
+import lk.ijse.Laptop_Shop_Management.tdm.CartTm;
+import lk.ijse.Laptop_Shop_Management.util.QrScanner;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
 import java.awt.image.BufferedImage;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
-
-import static lk.ijse.Laptop_Shop_Management.repository.UserRepo.getOwner;
 
 public class BuyingFormController {
 
@@ -93,13 +90,15 @@ public class BuyingFormController {
     @FXML
     private TextField txtItemId;
 
-    Item item = new Item();
+    BuyingBO buyingBO = (BuyingBO) BOFactory.getBO(BOFactory.BOType.BUYING);
+
+    ItemDTO itemDTO = new ItemDTO();
 
     private ObservableList<CartTm> list = FXCollections.observableArrayList();
 
     public void initialize(){
         try {
-            labelOwner.setText(" " + getOwner());
+            labelOwner.setText(" " + buyingBO.getOwner());
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -118,10 +117,10 @@ public class BuyingFormController {
     }
 
     private void clearData() {
-        txtQty.setText("");
-        txtUnitPrice.setText("");
+        txtQty.clear();
+        txtUnitPrice.clear();
         labelModel.setText("");
-        txtItemId.setText("");
+        txtItemId.clear();
     }
 
     private void setCellValueFactory() {
@@ -180,7 +179,7 @@ public class BuyingFormController {
         }
 
         for (int i = 0; i < purchaseTable.getItems().size(); i++){
-            if (item.getId() == ((Integer)colId.getCellData(i)) && (unitPrice == (Double)colUnitPrice.getCellData(i))){
+            if (itemDTO.getId() == ((Integer)colId.getCellData(i)) && (unitPrice == (Double)colUnitPrice.getCellData(i))){
                 CartTm tm = list.get(i);
 
                 qty += tm.getQty();
@@ -193,7 +192,7 @@ public class BuyingFormController {
             }
         }
 
-        CartTm tm = new CartTm(item.getId(), item.getModel(), unitPrice, qty, (unitPrice * qty), button);
+        CartTm tm = new CartTm(itemDTO.getId(), itemDTO.getModel(), unitPrice, qty, (unitPrice * qty), button);
         list.add(tm);
         purchaseTable.setItems(list);
     }
@@ -201,21 +200,21 @@ public class BuyingFormController {
     @FXML
     void btnBuyAction(ActionEvent event) {
         if (isValidSupplierTel()){
-            List<ItemSupplier> itemSupplier = new ArrayList<>();
+            List<ItemSupplierDTO> itemSupplierDTO = new ArrayList<>();
 
-            Supplier supplier = null;
+            SupplierDTO supplierDTO = null;
             try {
-                supplier = SupplierRepo.searchSupplier(Integer.parseInt(txtSupplierTel.getText()));
+                supplierDTO = buyingBO.searchSupplier(Integer.parseInt(txtSupplierTel.getText()));
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
 
             for (int i = 0;i < purchaseTable.getItems().size();i++){
-                itemSupplier.add(new ItemSupplier(purchaseTable.getItems().get(i).getId(),supplier.getId(), Date.valueOf(LocalDate.now()),purchaseTable.getItems().get(i).getQty(),purchaseTable.getItems().get(i).getUnitPrice()));
+                itemSupplierDTO.add(new ItemSupplierDTO(purchaseTable.getItems().get(i).getId(), supplierDTO.getId(), Date.valueOf(LocalDate.now()),purchaseTable.getItems().get(i).getQty(),purchaseTable.getItems().get(i).getUnitPrice()));
             }
 
             try {
-                if (BuyItemsRepo.buy(itemSupplier)){
+                if (buyingBO.buy(itemSupplierDTO)){
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Bought Successfully !!").show();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Order Bought Unsuccessfully !!").show();
@@ -276,8 +275,8 @@ public class BuyingFormController {
     void txtSupplierTelAction(ActionEvent event) {
         if (isValidSupplierTel()){
             try {
-                Supplier supplier = SupplierRepo.searchSupplier(Integer.parseInt(txtSupplierTel.getText()));
-                labelSupplierName.setText(" " + supplier.getName());
+                SupplierDTO supplierDTO = buyingBO.searchSupplier(Integer.parseInt(txtSupplierTel.getText()));
+                labelSupplierName.setText(" " + supplierDTO.getName());
             } catch (Exception e) {
             }
         }
@@ -286,13 +285,13 @@ public class BuyingFormController {
     @FXML
     void txtItemIdAction(ActionEvent event) {
         try {
-            item = ItemRepo.getItem(Integer.parseInt(txtItemId.getText()));
-            if (item != null){
-                labelModel.setText(item.getModel());
+            itemDTO = buyingBO.getItem(Integer.parseInt(txtItemId.getText()));
+            if (itemDTO != null){
+                labelModel.setText(itemDTO.getModel());
             } else {
-                txtItemId.setText("");
+                clearData();
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
         txtUnitPrice.requestFocus();
@@ -300,60 +299,24 @@ public class BuyingFormController {
 
     @FXML
     void btnScanAction(ActionEvent event) {
-        startScanning();
-        txtUnitPrice.requestFocus();
-    }
-
-    private void startScanning() {
-        Webcam webcam = Webcam.getDefault();
-        if (webcam != null) {
-            webcam.setViewSize(WebcamResolution.VGA.getSize());
-            webcam.open();
-
-            new Thread(() -> {
-                while (true) {
-                    BufferedImage image = webcam.getImage();
-                    if (image != null) {
-                        try {
-                            String qrCodeData = readQRCode(image);
-                            if (qrCodeData != null) {
-                                Platform.runLater(() -> {
-                                    txtItemId.setText(qrCodeData);
-                                    try {
-                                        item = ItemRepo.getItem(Integer.parseInt(qrCodeData));
-                                        if (item != null){
-                                            labelModel.setText(item.getModel());
-                                        } else {
-                                            txtItemId.setText("");
-                                        }
-                                    } catch (SQLException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                });
-                                webcam.close();
-                                return; // Stop scanning once QR code is found
-                            }
-                        } catch (NotFoundException e) {
-                            // QR code not found in the current frame, continue scanning
-                        }
+        String qrCodeData = QrScanner.startScanning();
+        if (qrCodeData != null){
+            Platform.runLater(() -> {
+                txtItemId.setText(qrCodeData);
+                try {
+                    itemDTO = buyingBO.getItem(Integer.parseInt(qrCodeData));
+                    if (itemDTO != null){
+                        labelModel.setText(itemDTO.getModel());
+                        txtUnitPrice.requestFocus();
+                    } else {
+                        clearData();
+                        btnScan.requestFocus();
                     }
+                } catch (Exception e) {
+                    new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
                 }
-            }).start();
-        } else {
-            System.err.println("No webcam detected!");
+            });
         }
-    }
-
-    private String readQRCode(BufferedImage image) throws NotFoundException {
-        Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
-        hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-
-        BinaryBitmap binaryBitmap = new BinaryBitmap(
-                new HybridBinarizer(new BufferedImageLuminanceSource(image)));
-        MultiFormatReader reader = new MultiFormatReader();
-        Result result = reader.decode(binaryBitmap, hints);
-
-        return result.getText();
     }
 
     @FXML

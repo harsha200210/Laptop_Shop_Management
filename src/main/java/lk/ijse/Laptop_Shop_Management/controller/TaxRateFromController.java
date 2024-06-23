@@ -6,7 +6,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Slider;
-import lk.ijse.Laptop_Shop_Management.repository.ConfigurationRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.TaxRateBO;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
 
@@ -18,9 +19,11 @@ public class TaxRateFromController {
     @FXML
     private TextField txtRate;
 
+    TaxRateBO taxRateBO = (TaxRateBO) BOFactory.getBO(BOFactory.BOType.TAXRATE);
+
     public void initialize(){
         try {
-            double rate = ConfigurationRepo.getTaxRate();
+            double rate = taxRateBO.getTaxRate();
             taxSlider.setValue(rate);
             txtRate.setText(String.format("%.2f",taxSlider.getValue()));
         } catch (Exception e) {
@@ -37,7 +40,7 @@ public class TaxRateFromController {
     void btnChangeAction(ActionEvent event) {
         if (changeValid()){
             try {
-                if (ConfigurationRepo.changeTaxRate(taxSlider.getValue())){
+                if (taxRateBO.changeTaxRate(taxSlider.getValue())){
                     new Alert(Alert.AlertType.CONFIRMATION,"Change Successfully !!").show();
                 } else {
                     new Alert(Alert.AlertType.WARNING,"Change Unsuccessfully !!").show();

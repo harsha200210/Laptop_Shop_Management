@@ -12,8 +12,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.Laptop_Shop_Management.model.User;
-import lk.ijse.Laptop_Shop_Management.repository.UserRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.LoginBO;
+import lk.ijse.Laptop_Shop_Management.dto.UserDTO;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
 import java.io.IOException;
@@ -30,7 +31,9 @@ public class LoginFormController {
     @FXML
     private TextField txtUserName;
 
-    public static User user;
+    LoginBO loginBO = (LoginBO) BOFactory.getBO(BOFactory.BOType.LOGIN);
+
+    public static UserDTO userDTO;
 
     @FXML
     void enterNameAction(ActionEvent event) {
@@ -45,12 +48,12 @@ public class LoginFormController {
     @FXML
     void btnLoginAction(ActionEvent event) {
         if (isValied()){
-            user = new User();
-            user.setUserName(txtUserName.getText());
-            user.setPassword(txtPassword.getText());
+            userDTO = new UserDTO();
+            userDTO.setUserName(txtUserName.getText());
+            userDTO.setPassword(txtPassword.getText());
 
             try {
-                boolean isUser = UserRepo.checkUser(user);
+                boolean isUser = loginBO.checkUser(userDTO);
                 if (isUser){
                     navigateToTheMainForm();
                 }

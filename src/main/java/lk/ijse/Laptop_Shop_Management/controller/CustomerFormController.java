@@ -9,9 +9,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.Laptop_Shop_Management.model.Customer;
-import lk.ijse.Laptop_Shop_Management.model.tm.CustomerTm;
-import lk.ijse.Laptop_Shop_Management.repository.CustomerRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.CustomerBO;
+import lk.ijse.Laptop_Shop_Management.dao.custom.impl.CustomerDAOImpl;
+import lk.ijse.Laptop_Shop_Management.dto.CustomerDTO;
+import lk.ijse.Laptop_Shop_Management.tdm.CustomerTm;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
 
@@ -59,6 +61,8 @@ public class CustomerFormController {
     @FXML
     private AnchorPane customerPane;
 
+    CustomerBO customerBO = (CustomerBO) BOFactory.getBO(BOFactory.BOType.CUSTOMER);
+
     public void initialize()  {
         setCellValueFactory();
         loadAllCustomers();
@@ -68,9 +72,9 @@ public class CustomerFormController {
     void btnSaveAction(ActionEvent event) {
         if (isValied()){
             try {
-                Customer customer = getValues();
-                if (CustomerRepo.save(customer)){
-                    new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved!").show();
+                CustomerDTO customer = getValues();
+                if (customerBO.save(customer)){
+                    new Alert(Alert.AlertType.CONFIRMATION,"CustomerDTO Saved!").show();
                     loadAllCustomers();
                     setNullValue();
                 }
@@ -80,8 +84,8 @@ public class CustomerFormController {
         }
     }
 
-    private Customer getValues() {
-        return new Customer(0,txtName.getText(),txtNic.getText(),txtAddress.getText(),txtEmail.getText(),Integer.parseInt(txtTel.getText()),"");
+    private CustomerDTO getValues() {
+        return new CustomerDTO(0,txtName.getText(),txtNic.getText(),txtAddress.getText(),txtEmail.getText(),Integer.parseInt(txtTel.getText()),"");
     }
 
     @FXML
@@ -100,9 +104,9 @@ public class CustomerFormController {
     @FXML
     void btnDeleteAction(ActionEvent event) {
         try {
-            if (CustomerRepo.checkId(txtNic.getText())){
-                if (CustomerRepo.delete(txtNic.getText())){
-                    new Alert(Alert.AlertType.CONFIRMATION,"Customer Deleted!").show();
+            if (customerBO.checkId(txtNic.getText())){
+                if (customerBO.delete(txtNic.getText())){
+                    new Alert(Alert.AlertType.CONFIRMATION,"CustomerDTO Deleted!").show();
                     loadAllCustomers();
                     setNullValue();
                 }
@@ -115,11 +119,11 @@ public class CustomerFormController {
     @FXML
     void btnUpdateAction(ActionEvent event) {
         try {
-            Customer customer = getValues();
-            if (CustomerRepo.checkId(customer.getNic())){
+            CustomerDTO customer = getValues();
+            if (customerBO.checkId(customer.getNic())){
                 updateValues(customer);
-                if (CustomerRepo.update()){
-                    new Alert(Alert.AlertType.CONFIRMATION,"Customer Updated!").show();
+                if (customerBO.update()){
+                    new Alert(Alert.AlertType.CONFIRMATION,"CustomerDTO Updated!").show();
                     setNullValue();
                     loadAllCustomers();
                 }
@@ -129,18 +133,18 @@ public class CustomerFormController {
         }
     }
 
-    private void updateValues(Customer customer) {
-        if (!customer.getName().equals("") && !customer.getName().equals(CustomerRepo.customer.getName())){
-            CustomerRepo.customer.setName(customer.getName());
+    private void updateValues(CustomerDTO customer) {
+        if (!customer.getName().equals("") && !customer.getName().equals(CustomerDAOImpl.customer.getName())){
+            CustomerDAOImpl.customer.setName(customer.getName());
         }
-        if (!customer.getAddress().equals("") && !customer.getAddress().equals(CustomerRepo.customer.getAddress())){
-            CustomerRepo.customer.setAddress(customer.getAddress());
+        if (!customer.getAddress().equals("") && !customer.getAddress().equals(CustomerDAOImpl.customer.getAddress())){
+            CustomerDAOImpl.customer.setAddress(customer.getAddress());
         }
-        if (!customer.getEmail().equals("") && !customer.getEmail().equals(CustomerRepo.customer.getEmail())){
-            CustomerRepo.customer.setEmail(customer.getEmail());
+        if (!customer.getEmail().equals("") && !customer.getEmail().equals(CustomerDAOImpl.customer.getEmail())){
+            CustomerDAOImpl.customer.setEmail(customer.getEmail());
         }
-        if (customer.getTel() != 0 && customer.getTel() != CustomerRepo.customer.getTel()){
-            CustomerRepo.customer.setTel(customer.getTel());
+        if (customer.getTel() != 0 && customer.getTel() != CustomerDAOImpl.customer.getTel()){
+            CustomerDAOImpl.customer.setTel(customer.getTel());
         }
     }
 
@@ -149,7 +153,7 @@ public class CustomerFormController {
         searchAction(event);
     }
 
-    private void setTable(Customer customer) {
+    private void setTable(CustomerDTO customer) {
         ObservableList<CustomerTm> obList = FXCollections.observableArrayList();
         CustomerTm tm = new CustomerTm(customer.getName(), customer.getNic(), customer.getAddress(), customer.getEmail(), customer.getTel());
         obList.add(tm);
@@ -160,7 +164,7 @@ public class CustomerFormController {
     void searchAction(ActionEvent event) {
         if (searchValid()){
             try {
-                Customer customer = CustomerRepo.search(txtSearch.getText());
+                CustomerDTO customer = customerBO.search(txtSearch.getText());
                 if (customer != null){
                     setValues(customer);
                     setTable(customer);
@@ -173,7 +177,7 @@ public class CustomerFormController {
         }
     }
 
-    private void setValues(Customer customer) {
+    private void setValues(CustomerDTO customer) {
             txtNic.setText(customer.getNic());
             txtName.setText(customer.getName());
             txtAddress.setText(customer.getAddress());
@@ -184,7 +188,10 @@ public class CustomerFormController {
     private void loadAllCustomers(){
         ObservableList<CustomerTm> obList = FXCollections.observableArrayList();
         try {
-            obList = CustomerRepo.getCustomers();
+            ObservableList<CustomerDTO> list = customerBO.getCustomers();
+            for (CustomerDTO customer : list){
+                obList.add(new CustomerTm(customer.getName(),customer.getNic(),customer.getAddress(),customer.getEmail(),customer.getTel()));
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

@@ -14,15 +14,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
-import lk.ijse.Laptop_Shop_Management.model.Item;
-import lk.ijse.Laptop_Shop_Management.repository.ConfigurationRepo;
-import lk.ijse.Laptop_Shop_Management.repository.ItemRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.GenerateQrBO;
+import lk.ijse.Laptop_Shop_Management.bo.custom.ItemBO;
+import lk.ijse.Laptop_Shop_Management.bo.custom.impl.ItemBOImpl;
+import lk.ijse.Laptop_Shop_Management.dto.ItemDTO;
 import lombok.Setter;
 
 import java.io.File;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import java.sql.SQLException;
 
 
 public class GenerateQrFormController {
@@ -39,16 +40,20 @@ public class GenerateQrFormController {
     @Setter
     private ItemFormController itemFormController;
 
-    private Item item;
+    GenerateQrBO generateQrBO = (GenerateQrBO) BOFactory.getBO(BOFactory.BOType.GENERATEQR);
+
+    ItemBO itemBO = new ItemBOImpl();
+
+    private ItemDTO itemDTO;
 
     public void initialize(){
         savePane.setVisible(false);
         try {
-            String path  = ConfigurationRepo.getFilePath();
+            String path  = generateQrBO.getFilePath();
             if (path != null) {
                 labelFilePath.setText(path);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
@@ -66,8 +71,8 @@ public class GenerateQrFormController {
     void btnGenerateQrAction(ActionEvent event) {
         savePane.setVisible(false);
         try {
-            item = ItemRepo.search(txtModel.getText());
-            if (item != null) {
+            itemDTO = itemBO.search(txtModel.getText());
+            if (itemDTO != null) {
                 savePane.setVisible(true);
             }
         } catch (Exception e) {
@@ -92,9 +97,9 @@ public class GenerateQrFormController {
 
     private void saveQrImage(){
         try {
-            String filePath = ConfigurationRepo.getFilePath();
-            String QR_CODE_IMAGE_PATH = filePath + "/" + item.getModel() + ".png";
-            String text = String.valueOf(item.getId()); // Content for the QR code
+            String filePath = generateQrBO.getFilePath();
+            String QR_CODE_IMAGE_PATH = filePath + "/" + itemDTO.getModel() + ".png";
+            String text = String.valueOf(itemDTO.getId()); // Content for the QR code
             int width = 300;
             int height = 300;
             String format = "png";
@@ -120,12 +125,12 @@ public class GenerateQrFormController {
             System.out.println(directoryPath);
             labelFilePath.setText(directoryPath);
             try {
-                if (ConfigurationRepo.getCount() == 1){
-                    if (ConfigurationRepo.updateFilePath(directoryPath)){
+                if (generateQrBO.getCount() == 1){
+                    if (generateQrBO.updateFilePath(directoryPath)){
                         labelFilePath.setText(directoryPath);
                     }
                 } else {
-                    if (ConfigurationRepo.addFilePath(directoryPath)){
+                    if (generateQrBO.addFilePath(directoryPath)){
                         labelFilePath.setText(directoryPath);
                     }
                 }

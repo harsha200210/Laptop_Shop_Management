@@ -11,9 +11,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.Laptop_Shop_Management.model.Item;
-import lk.ijse.Laptop_Shop_Management.model.tm.ItemTm;
-import lk.ijse.Laptop_Shop_Management.repository.ItemRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.ItemBO;
+import lk.ijse.Laptop_Shop_Management.dao.custom.impl.ItemDAOImpl;
+import lk.ijse.Laptop_Shop_Management.dto.ItemDTO;
+import lk.ijse.Laptop_Shop_Management.tdm.ItemTm;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
 
@@ -46,6 +48,8 @@ public class ItemFormController {
     @FXML
     private TextField txtSearch;
 
+    ItemBO itemBO = (ItemBO) BOFactory.getBO(BOFactory.BOType.ITEM);
+
     public void initialize(){
         setCellValueFactory();
         loadAllItem();
@@ -65,8 +69,8 @@ public class ItemFormController {
     @FXML
     void btnDeleteAction(ActionEvent event) {
         try {
-            if (ItemRepo.checkId(txtModel.getText())){
-                if (ItemRepo.delete(txtModel.getText())){
+            if (itemBO.checkId(txtModel.getText())){
+                if (itemBO.delete(txtModel.getText())){
                     new Alert(Alert.AlertType.CONFIRMATION,"Item Deleted!").show();
                     loadAllItem();
                     setNullValue();
@@ -81,8 +85,8 @@ public class ItemFormController {
     void btnSaveAction(ActionEvent event) {
         if (isValied()){
             try {
-                Item item = getValues();
-                if (ItemRepo.save(item)){
+                ItemDTO itemDTO = getValues();
+                if (itemBO.save(itemDTO)){
                     new Alert(Alert.AlertType.CONFIRMATION,"Item Saved!").show();
                     loadAllItem();
                     setNullValue();
@@ -93,17 +97,17 @@ public class ItemFormController {
         }
     }
 
-    private Item getValues() {
-        return new Item(0,txtModel.getText(),Integer.parseInt(txtQty.getText()),Double.valueOf(txtPrice.getText()),"");
+    private ItemDTO getValues() {
+        return new ItemDTO(0,txtModel.getText(),Integer.parseInt(txtQty.getText()),Double.parseDouble(txtPrice.getText()),"");
     }
 
     @FXML
     void btnUpdateAction(ActionEvent event) {
         try {
-            Item item = getValues();
-            if (ItemRepo.checkId(item.getModel())){
-                updateValues(item);
-                if (ItemRepo.update()){
+            ItemDTO itemDTO = getValues();
+            if (itemBO.checkId(itemDTO.getModel())){
+                updateValues(itemDTO);
+                if (itemBO.update()){
                     new Alert(Alert.AlertType.CONFIRMATION,"Item Updated!").show();
                     setNullValue();
                     loadAllItem();
@@ -114,15 +118,15 @@ public class ItemFormController {
         }
     }
 
-    private void updateValues(Item item) {
-        if (!item.getModel().equals("") && !item.getModel().equals(ItemRepo.item.getModel())){
-            ItemRepo.item.setModel(item.getModel());
+    private void updateValues(ItemDTO itemDTO) {
+        if (!itemDTO.getModel().equals("") && !itemDTO.getModel().equals(ItemDAOImpl.item.getModel())){
+            ItemDAOImpl.item.setModel(itemDTO.getModel());
         }
-        if (item.getQty() != 0 && item.getQty() != ItemRepo.item.getQty()){
-            ItemRepo.item.setQty(item.getQty());
+        if (itemDTO.getQty() != 0 && itemDTO.getQty() != ItemDAOImpl.item.getQty()){
+            ItemDAOImpl.item.setQty(itemDTO.getQty());
         }
-        if (item.getPrice() != 0.0 && item.getPrice() != ItemRepo.item.getPrice()){
-            ItemRepo.item.setPrice(item.getPrice());
+        if (itemDTO.getPrice() != 0.0 && itemDTO.getPrice() != ItemDAOImpl.item.getPrice()){
+            ItemDAOImpl.item.setPrice(itemDTO.getPrice());
         }
     }
 
@@ -131,9 +135,9 @@ public class ItemFormController {
         searchAction(event);
     }
 
-    private void setTable(Item item) {
+    private void setTable(ItemDTO itemDTO) {
         ObservableList<ItemTm> obList = FXCollections.observableArrayList();
-        ItemTm tm = new ItemTm(item.getModel(), item.getQty(), item.getPrice());
+        ItemTm tm = new ItemTm(itemDTO.getModel(), itemDTO.getQty(), itemDTO.getPrice());
         obList.add(tm);
         itemTable.setItems(obList);
     }
@@ -144,20 +148,20 @@ public class ItemFormController {
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
-    private void setValues(Item item) {
-            txtModel.setText(item.getModel());
-            txtQty.setText(String.valueOf(item.getQty()));
-            txtPrice.setText(String.valueOf(item.getPrice()));
+    private void setValues(ItemDTO itemDTO) {
+        txtModel.setText(itemDTO.getModel());
+        txtQty.setText(String.valueOf(itemDTO.getQty()));
+        txtPrice.setText(String.valueOf(itemDTO.getPrice()));
     }
 
     @FXML
     void searchAction(ActionEvent event) {
         if (searchValid()){
             try {
-                Item item = ItemRepo.search(txtSearch.getText());
-                if (item != null){
-                    setValues(item);
-                    setTable(item);
+                ItemDTO itemDTO = itemBO.search(txtSearch.getText());
+                if (itemDTO != null){
+                    setValues(itemDTO);
+                    setTable(itemDTO);
                 } else {
                     setNullValue();
                 }
@@ -169,7 +173,7 @@ public class ItemFormController {
     private void loadAllItem(){
         ObservableList<ItemTm> obList = FXCollections.observableArrayList();
         try {
-            obList = ItemRepo.getItem();
+            obList = itemBO.getItem();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

@@ -17,7 +17,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 import javafx.stage.StageStyle;
-import lk.ijse.Laptop_Shop_Management.repository.*;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.MainBO;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -119,19 +120,20 @@ public class MainFormController {
     @FXML
     private AnchorPane mainForm;
 
+    MainBO mainBO = (MainBO) BOFactory.getBO(BOFactory.BOType.MAIN);
 
     public static String date;
 
     public void initialize(){
-        labelName.setText(LoginFormController.user.getUserName());
-        labelPosition.setText(LoginFormController.user.getType());
+        labelName.setText(LoginFormController.userDTO.getUserName());
+        labelPosition.setText(LoginFormController.userDTO.getType());
         setDate();
         setCounts();
         setPP();
     }
 
     private void setPP() {
-        Image image = new Image("file:" + LoginFormController.user.getView());
+        Image image = new Image("file:" + LoginFormController.userDTO.getView());
         ImageView mainImageView = new ImageView(image);
 
         Circle clip = new Circle();
@@ -151,12 +153,12 @@ public class MainFormController {
 
     private void setCounts()  {
         try {
-            labelOrderCount.setText(String.valueOf(OrderRepo.getOrderCount()));
-            labelCustomerCount.setText(String.valueOf(CustomerRepo.customerCount()));
-            labelSupplierCount.setText(String.valueOf(SupplierRepo.suppierCount()));
-            labelItemCount.setText(String.valueOf(ItemRepo.itemCount()));
-            labelEmployeeCount.setText(String.valueOf(EmployeeRepo.employeeCount()));
-            labelDriverCount.setText(String.valueOf(DriverRepo.driverCount()));
+            labelOrderCount.setText(String.valueOf(mainBO.getOrderCount()));
+            labelCustomerCount.setText(String.valueOf(mainBO.customerCount()));
+            labelSupplierCount.setText(String.valueOf(mainBO.supplierCount()));
+            labelItemCount.setText(String.valueOf(mainBO.itemCount()));
+            labelEmployeeCount.setText(String.valueOf(mainBO.employeeCount()));
+            labelDriverCount.setText(String.valueOf(mainBO.driverCount()));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -217,7 +219,7 @@ public class MainFormController {
 
     @FXML
     void employeeAction(ActionEvent event) {
-        if (LoginFormController.user.getType().equals("Owner")){
+        if (LoginFormController.userDTO.getType().equals("Owner")){
             try {
                 getStyle();
                 changeButtonStyle(btnEmployee);
@@ -267,7 +269,7 @@ public class MainFormController {
 
     @FXML
     void supplierAction(ActionEvent event) {
-        if (LoginFormController.user.getType().equals("Owner")){
+        if (LoginFormController.userDTO.getType().equals("Owner")){
             try {
                 getStyle();
                 changeButtonStyle(btnSupplier);
@@ -283,7 +285,7 @@ public class MainFormController {
     @FXML
     void btnOrderAction(ActionEvent event) {
         try {
-            if (OrderRepo.getOrderCount() != 0){
+            if (mainBO.getOrderCount() != 0){
                 loadOrderForm();
             } else {
                 loadFirstOrderIdForm();

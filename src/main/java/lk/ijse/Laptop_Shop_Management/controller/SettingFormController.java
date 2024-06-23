@@ -3,6 +3,7 @@ package lk.ijse.Laptop_Shop_Management.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
@@ -10,8 +11,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-
 
 public class SettingFormController {
 
@@ -31,22 +30,26 @@ public class SettingFormController {
 
     @FXML
     void userSettingAction(MouseEvent event) {
-        Scene scene = null;
         try {
-            scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/password_form.fxml")));
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/password_form.fxml"));
+            Parent root = loader.load();
+            PasswordFormController controller = loader.getController();
+            controller.setSettingFormController(this);
+
+            Scene scene = new Scene(root);
+
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.centerOnScreen();
+            stage.setScene(scene);
+            stage.show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        Stage stage = new Stage();
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setScene(scene);
-        stage.showAndWait();
-
-        NavigateUserSetting(PasswordFormController.isUser);
-
     }
 
-    private void NavigateUserSetting(boolean navigate){
+
+    public void NavigateUserSetting(boolean navigate){
         if (navigate) {
             removeStyle();
             changeStyleLine(lineUserSetting);

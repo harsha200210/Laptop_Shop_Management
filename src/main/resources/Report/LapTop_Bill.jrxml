@@ -87,27 +87,27 @@
 	<field name="COLUMN_16" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="item_id"/>
 		<property name="com.jaspersoft.studio.field.label" value="item_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="model" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="model"/>
 		<property name="com.jaspersoft.studio.field.label" value="model"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="on_hand_qty" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="on_hand_qty"/>
 		<property name="com.jaspersoft.studio.field.label" value="on_hand_qty"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="price" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.name" value="price"/>
 		<property name="com.jaspersoft.studio.field.label" value="price"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<field name="COLUMN_20" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="status"/>
 		<property name="com.jaspersoft.studio.field.label" value="status"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="itemDTO"/>
 	</field>
 	<group name="order_id">
 		<groupExpression><![CDATA[$F{order_id}]]></groupExpression>

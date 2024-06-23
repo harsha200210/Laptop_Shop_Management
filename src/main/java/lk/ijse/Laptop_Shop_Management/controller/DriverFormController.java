@@ -8,9 +8,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import lk.ijse.Laptop_Shop_Management.model.Driver;
-import lk.ijse.Laptop_Shop_Management.model.tm.DriverTm;
-import lk.ijse.Laptop_Shop_Management.repository.DriverRepo;
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.DriverBO;
+import lk.ijse.Laptop_Shop_Management.dao.custom.impl.DriverDAOImpl;
+import lk.ijse.Laptop_Shop_Management.dto.DriverDTO;
+import lk.ijse.Laptop_Shop_Management.tdm.DriverTm;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
 
@@ -52,6 +54,8 @@ public class DriverFormController {
     @FXML
     private TextField txtTel;
 
+    DriverBO driverBO = (DriverBO) BOFactory.getBO(BOFactory.BOType.DRIVER);
+
     public void initialize(){
         setCellValueFactory();
         loadAllDrivers();
@@ -73,8 +77,8 @@ public class DriverFormController {
     @FXML
     void btnDeleteAction(ActionEvent event) {
         try {
-            if (DriverRepo.checkId(txtNic.getText())){
-                if (DriverRepo.delete(txtNic.getText())){
+            if (driverBO.checkId(txtNic.getText())){
+                if (driverBO.delete(txtNic.getText())){
                     new Alert(Alert.AlertType.CONFIRMATION,"Driver Deleted!").show();
                     loadAllDrivers();
                     setNullValue();
@@ -89,8 +93,8 @@ public class DriverFormController {
     void btnSaveAction(ActionEvent event) {
         if (isValied()){
             try {
-                Driver driver = getValues();
-                if (DriverRepo.save(driver)){
+                DriverDTO driverDTO = getValues();
+                if (driverBO.save(driverDTO)){
                     new Alert(Alert.AlertType.CONFIRMATION,"Driver Saved!").show();
                     loadAllDrivers();
                     setNullValue();
@@ -101,17 +105,17 @@ public class DriverFormController {
         }
     }
 
-    private Driver getValues() {
-        return new Driver(0,txtName.getText(),txtNic.getText(),txtAddress.getText(),txtEmail.getText(),Integer.parseInt(txtTel.getText()),"");
+    private DriverDTO getValues() {
+        return new DriverDTO(0,txtName.getText(),txtNic.getText(),txtAddress.getText(),txtEmail.getText(),Integer.parseInt(txtTel.getText()),"");
     }
 
     @FXML
     void btnUpdateAction(ActionEvent event) {
         try {
-            Driver driver = getValues();
-            if (DriverRepo.checkId(driver.getNic())){
-                updateValues(driver);
-                if (DriverRepo.update()){
+            DriverDTO driverDTO = getValues();
+            if (driverBO.checkId(driverDTO.getNic())){
+                updateValues(driverDTO);
+                if (driverBO.update()){
                     new Alert(Alert.AlertType.CONFIRMATION,"Driver Updated!").show();
                     setNullValue();
                     loadAllDrivers();
@@ -122,18 +126,18 @@ public class DriverFormController {
         }
     }
 
-    private void updateValues(Driver driver) {
-        if (!driver.getName().equals("") && !driver.getName().equals(DriverRepo.driver.getName())){
-            DriverRepo.driver.setName(driver.getName());
+    private void updateValues(DriverDTO driverDTO) {
+        if (!driverDTO.getName().equals("") && !driverDTO.getName().equals(DriverDAOImpl.driver.getName())){
+            DriverDAOImpl.driver.setName(driverDTO.getName());
         }
-        if (!driver.getAddress().equals("") && !driver.getAddress().equals(DriverRepo.driver.getAddress())){
-            DriverRepo.driver.setAddress(driver.getAddress());
+        if (!driverDTO.getAddress().equals("") && !driverDTO.getAddress().equals(DriverDAOImpl.driver.getAddress())){
+            DriverDAOImpl.driver.setAddress(driverDTO.getAddress());
         }
-        if (!driver.getEmail().equals("") && !driver.getEmail().equals(DriverRepo.driver.getEmail())){
-            DriverRepo.driver.setEmail(driver.getEmail());
+        if (!driverDTO.getEmail().equals("") && !driverDTO.getEmail().equals(DriverDAOImpl.driver.getEmail())){
+            DriverDAOImpl.driver.setEmail(driverDTO.getEmail());
         }
-        if (driver.getTel() != 0 && driver.getTel() != DriverRepo.driver.getTel()){
-            DriverRepo.driver.setTel(driver.getTel());
+        if (driverDTO.getTel() != 0 && driverDTO.getTel() != DriverDAOImpl.driver.getTel()){
+            DriverDAOImpl.driver.setTel(driverDTO.getTel());
         }
     }
 
@@ -142,30 +146,30 @@ public class DriverFormController {
        searchAction(event);
     }
 
-    private void setTable(Driver driver) {
+    private void setTable(DriverDTO driverDTO) {
         ObservableList<DriverTm> obList = FXCollections.observableArrayList();
-        DriverTm tm = new DriverTm(driver.getName(), driver.getNic(), driver.getAddress(), driver.getEmail(), driver.getTel());
+        DriverTm tm = new DriverTm(driverDTO.getName(), driverDTO.getNic(), driverDTO.getAddress(), driverDTO.getEmail(), driverDTO.getTel());
         obList.add(tm);
         driverTable.setItems(obList);
         setCellValueFactory();
     }
 
-    private void setValues(Driver driver) {
-            txtNic.setText(driver.getNic());
-            txtName.setText(driver.getName());
-            txtAddress.setText(driver.getAddress());
-            txtEmail.setText(driver.getEmail());
-            txtTel.setText(String.valueOf(driver.getTel()));
+    private void setValues(DriverDTO driverDTO) {
+            txtNic.setText(driverDTO.getNic());
+            txtName.setText(driverDTO.getName());
+            txtAddress.setText(driverDTO.getAddress());
+            txtEmail.setText(driverDTO.getEmail());
+            txtTel.setText(String.valueOf(driverDTO.getTel()));
     }
 
     @FXML
     void searchAction(ActionEvent event) {
         if (searchValid()){
             try {
-                Driver driver = DriverRepo.search(txtSearch.getText());
-                if (driver != null){
-                    setValues(driver);
-                    setTable(driver);
+                DriverDTO driverDTO = driverBO.search(txtSearch.getText());
+                if (driverDTO != null){
+                    setValues(driverDTO);
+                    setTable(driverDTO);
                 } else {
                     setNullValue();
                 }
@@ -177,7 +181,10 @@ public class DriverFormController {
     private void loadAllDrivers(){
         ObservableList<DriverTm> obList = FXCollections.observableArrayList();
         try {
-            obList = DriverRepo.getDriver();
+            ObservableList<DriverDTO> list = driverBO.getDriver();
+            for (DriverDTO driverDTO : list){
+                obList.add(new DriverTm(driverDTO.getName(), driverDTO.getNic(), driverDTO.getAddress(), driverDTO.getEmail(), driverDTO.getTel()));
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

@@ -14,9 +14,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.Laptop_Shop_Management.model.tm.ItemTm;
-import lk.ijse.Laptop_Shop_Management.repository.ItemRepo;
-
+import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
+import lk.ijse.Laptop_Shop_Management.bo.custom.OutOfStokeBO;
+import lk.ijse.Laptop_Shop_Management.tdm.ItemTm;
 
 public class OutOfStokeFormController {
 
@@ -38,6 +38,8 @@ public class OutOfStokeFormController {
     @FXML
     private AnchorPane outOfStokeAnchorPane;
 
+    OutOfStokeBO outOfStokeBO = (OutOfStokeBO) BOFactory.getBO(BOFactory.BOType.OUTOFSTOKE);
+
     private ObservableList<ItemTm> list;
 
     public void initialize(){
@@ -47,7 +49,7 @@ public class OutOfStokeFormController {
 
     private void loadData() {
         try {
-            list = ItemRepo.outOfStokeItem();
+            list = outOfStokeBO.outOfStokeItem();
             itemTable.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

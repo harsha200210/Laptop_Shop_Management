@@ -14,7 +14,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="36.0" layoutY="79.0" prefHeight="16.0" prefWidth="556.0" text="Set what goes before and after the order ID to change what it looks like for you and your customer">
+      <Label layoutX="36.0" layoutY="79.0" prefHeight="16.0" prefWidth="556.0" text="Set what goes before and after the orderDTO ID to change what it looks like for you and your customer">
          <font>
             <Font size="10.0" />
          </font>

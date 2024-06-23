@@ -23,7 +23,7 @@
       <PasswordField fx:id="txtPassword" layoutX="114.0" layoutY="295.0" onKeyReleased="#txtPasswordAction" prefHeight="33.0" prefWidth="268.0" promptText="Password" style="-fx-background-radius: 5;" />
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="49.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-user-50%20(1).png" />
+            <Image url="@../icon/icons8-userDTO-50%20(1).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="49.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">

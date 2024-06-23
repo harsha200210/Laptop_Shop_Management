@@ -4,16 +4,162 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9562f587-9ed4-4d7c-95cd-9811a9c3fb39" name="Changes" comment="delete test">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icon/icons8-folder-50.png" afterDir="false" />
+    <list default="true" id="9562f587-9ed4-4d7c-95cd-9811a9c3fb39" name="Changes" comment="set file chooser">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/BOFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/SuperBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/BuyingBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/BuyingListBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/CustomerBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/DeleteDataBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/DeliverySettingBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/DriverBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/EmployeeBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/GenerateQrBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/ItemBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/LoginBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/MainBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/OrderBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/OrderListBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/OutOfStokeBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/PaymentBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/SignUpBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/SupplierBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/TaxRateBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/UserSettingBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/BuyingBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/BuyingListBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/CustomerBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/DeleteDataBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/DeliverySettingBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/DriverBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/EmployeeBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/GenerateQrBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/ItemBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/LoginBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/MainBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/OrderBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/OrderListBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/OutOfStokeBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/PaymentBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/SignUpBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/SupplierBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/TaxRateBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/UserSettingBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/CrudDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/DAOFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/SQLUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/SuperDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/ConfigurationDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/CustomerDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/DeliveryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/DriverDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/EmployeeDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/ItemDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/ItemDetailDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/ItemSupplierDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/OrderDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/PaymentDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/QueryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/SalaryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/SupplierDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/UserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/ConfigurationDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/CustomerDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/DeliveryDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/DriverDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/EmployeeDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/ItemDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/ItemDetailDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/ItemSupplierDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/OrderDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/PaymentDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/QueryDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/SalaryDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/SupplierDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/UserDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/CustomerDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/DeliveryDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/DriverDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/EmployeeDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/ItemDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/ItemSupplierDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/OrderDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/PaymentDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/SalaryDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/SupplierDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/ItemDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/util/Email.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/util/QrScanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3b074624-9567-4d19-8ba8-a3846b40b3fa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/BuyingFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/BuyingFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/BuyingListFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/BuyingListFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/CustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/CustomerFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/DeleteDataFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/DeleteDataFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/DeliverySettingFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/DeliverySettingFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/DriverFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/DriverFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/EmailFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/EmailFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/EmployeeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/EmployeeFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/GenerateQrFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/GenerateQrFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/ConfigurationRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/ConfigurationRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/ItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/ItemFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/LoginFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/MainFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/MainFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OrderFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OrderListFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OrderListFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OutOfStokeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OutOfStokeFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/PasswordFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/PasswordFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/PaymentFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/PaymentFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SettingFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SettingFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SignUpFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SignUpFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SupplierFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SupplierFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/TaxRateFromController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/TaxRateFromController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/UserSettingFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/UserSettingFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/Delivery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/Delivery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/ItemDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/ItemDetailDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/ItemSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/ItemSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/PlaceOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/PlaceOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/Salary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/Salary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/tm/CartTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/tdm/CartTm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/tm/CustomerTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/tdm/CustomerTm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/tm/DriverTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/tdm/DriverTm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/tm/EmployeeTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/tdm/EmployeeTm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/tm/ItemTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/tdm/ItemTm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/tm/OrderItemTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/tdm/OrderItemTm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/tm/OrderListTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/tdm/OrderListTm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/tm/SupplierItemTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/tdm/SupplierItemTm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/model/tm/SupplierTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/tdm/SupplierTm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/BuyItemsRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/ConfigurationRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/CustomerRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/DeliveryRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/DriverRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/EmployeeRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/ItemDetailsRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/ItemRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/ItemSupplierRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/OrderRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/PaymentRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/PlaceToOrderRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/SalaryRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/SupplierRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/repository/UserRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Report/LapTop_Bill.jrxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Report/LapTop_Bill.jrxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/sqlDB/quries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlDB/quries.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/generateQr_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/generateQr_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/buying_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/buying_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/firstOrderId_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/firstOrderId_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/password_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/password_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/signUp_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/signUp_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/userSetting_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/userSetting_form.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +170,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -92,7 +239,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/harsha/Documents/IJSE/IJSE_Projects/connect-four-game-assignment[2301691017]/connect-four-game-assignment&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/harsha/Downloads/Laptop_Shop_Management/src/main/java/lk/ijse/Laptop_Shop_Management/entity&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -113,10 +260,15 @@
       <recent name="lk.ijse.Laptop_Shop_Management" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/entity" />
       <recent name="$PROJECT_DIR$/src/main/resources/Report" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/css" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="lk.ijse.Laptop_Shop_Management.bo.custom" />
+      <recent name="lk.ijse.Laptop_Shop_Management.dao" />
     </key>
   </component>
   <component name="RunManager" selected="Application.LauncherWrapper">
@@ -355,7 +507,30 @@
       <workItem from="1716231198397" duration="1638000" />
       <workItem from="1716299383810" duration="1448000" />
       <workItem from="1716350651047" duration="3941000" />
-      <workItem from="1716388377657" duration="4480000" />
+      <workItem from="1716388377657" duration="4911000" />
+      <workItem from="1716867341682" duration="644000" />
+      <workItem from="1716871069122" duration="23000" />
+      <workItem from="1716907637744" duration="886000" />
+      <workItem from="1717073039762" duration="64000" />
+      <workItem from="1717133563833" duration="141000" />
+      <workItem from="1717133984682" duration="1733000" />
+      <workItem from="1717157646948" duration="11000" />
+      <workItem from="1717163034142" duration="9000" />
+      <workItem from="1718168521749" duration="271000" />
+      <workItem from="1718615262120" duration="32000" />
+      <workItem from="1718616872669" duration="3237000" />
+      <workItem from="1718633329243" duration="27000" />
+      <workItem from="1718634800795" duration="8069000" />
+      <workItem from="1718680060987" duration="5512000" />
+      <workItem from="1718705420670" duration="3360000" />
+      <workItem from="1718729985418" duration="1893000" />
+      <workItem from="1718766746595" duration="4410000" />
+      <workItem from="1718801520125" duration="715000" />
+      <workItem from="1718866560516" duration="6113000" />
+      <workItem from="1718881213056" duration="36000" />
+      <workItem from="1718896149466" duration="8394000" />
+      <workItem from="1719047226221" duration="6816000" />
+      <workItem from="1719125886118" duration="13187000" />
     </task>
     <task id="LOCAL-00001" summary="set push">
       <option name="closed" value="true" />
@@ -381,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716355515106</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="set file chooser">
+      <option name="closed" value="true" />
+      <created>1716394091918</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716394091918</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,7 +575,8 @@
     <MESSAGE value="set push" />
     <MESSAGE value="create test" />
     <MESSAGE value="delete test" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete test" />
+    <MESSAGE value="set file chooser" />
+    <option name="LAST_COMMIT_MESSAGE" value="set file chooser" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />

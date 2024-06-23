@@ -88,7 +88,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtQty" layoutX="1213.0" layoutY="456.0" onAction="#qtyAction" onKeyReleased="#txtQtyAction" prefHeight="32.0" prefWidth="131.0" style="-fx-border-color: black;">
+            <TextField fx:id="txtQty" alignment="CENTER" layoutX="1213.0" layoutY="456.0" onAction="#qtyAction" onKeyReleased="#txtQtyAction" prefHeight="32.0" prefWidth="131.0" style="-fx-border-color: black;">
                <font>
                   <Font size="17.0" />
                </font>
@@ -182,7 +182,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TextField fx:id="txtItemId" layoutX="230.0" layoutY="457.0" onAction="#txtItemIdAction" onKeyReleased="#txtQtyAction" prefHeight="32.0" prefWidth="131.0" style="-fx-border-color: black;">
+            <TextField fx:id="txtItemId" alignment="CENTER" layoutX="230.0" layoutY="457.0" onAction="#txtItemIdAction" onKeyReleased="#txtQtyAction" prefHeight="32.0" prefWidth="131.0" style="-fx-border-color: black;">
                <font>
                   <Font size="17.0" />
                </font>
