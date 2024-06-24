@@ -36,7 +36,10 @@ public class OrderBOImpl implements OrderBO {
     @Override
     public CustomerDTO getCustomerName(String tel) throws SQLException, ClassNotFoundException {
         Customer customer = customerDAO.getCustomerName(tel);
-        return new CustomerDTO(customer.getId(),customer.getName(),customer.getNic(),customer.getAddress(),customer.getEmail(),customer.getTel(),customer.getStatus());
+        if (customer != null){
+            return new CustomerDTO(customer.getId(),customer.getName(),customer.getNic(),customer.getAddress(),customer.getEmail(),customer.getTel(),customer.getStatus());
+        }
+        return null;
     }
 
     @Override

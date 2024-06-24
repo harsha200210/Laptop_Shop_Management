@@ -52,7 +52,10 @@ public class ItemBOImpl implements ItemBO {
     @Override
     public ItemDTO search(String model) throws SQLException, ClassNotFoundException {
         Item item = itemDAO.search(model);
-        return new ItemDTO(item.getId(),item.getModel(),item.getQty(),item.getPrice(),item.getStatus());
+        if (item != null){
+            return new ItemDTO(item.getId(),item.getModel(),item.getQty(),item.getPrice(),item.getStatus());
+        }
+        return null;
     }
 
     @Override
@@ -73,7 +76,10 @@ public class ItemBOImpl implements ItemBO {
     @Override
     public ItemDTO getItem(int id) throws SQLException, ClassNotFoundException {
         Item item = itemDAO.getItem(id);
-        return new ItemDTO(item.getId(),item.getModel(),item.getQty(),item.getPrice(),item.getStatus());
+        if (item != null){
+            return new ItemDTO(item.getId(),item.getModel(),item.getQty(),item.getPrice(),item.getStatus());
+        }
+        return null;
     }
 
     @Override

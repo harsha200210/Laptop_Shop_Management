@@ -47,7 +47,10 @@ public class DriverBOImpl implements DriverBO {
     @Override
     public DriverDTO search(String nic) throws SQLException, ClassNotFoundException {
         Driver driver = driverDAO.search(nic);
-        return new DriverDTO(driver.getId(), driver.getName(), driver.getNic(), driver.getAddress(), driver.getEmail(), driver.getTel(), driver.getStatus());
+        if (driver != null){
+            return new DriverDTO(driver.getId(), driver.getName(), driver.getNic(), driver.getAddress(), driver.getEmail(), driver.getTel(), driver.getStatus());
+        }
+        return null;
     }
 
     @Override

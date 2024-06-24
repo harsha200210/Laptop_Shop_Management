@@ -26,7 +26,10 @@ public class CustomerBOImpl implements CustomerBO {
     @Override
     public CustomerDTO search(String nic) throws SQLException, ClassNotFoundException {
         Customer customer = customerDAO.search(nic);
-        return new CustomerDTO(customer.getId(),customer.getName(),customer.getNic(),customer.getAddress(),customer.getEmail(),customer.getTel(),customer.getStatus());
+        if (customer == null) {
+            return new CustomerDTO(customer.getId(),customer.getName(),customer.getNic(),customer.getAddress(),customer.getEmail(),customer.getTel(),customer.getStatus());
+        }
+        return null;
     }
 
     @Override
@@ -63,7 +66,10 @@ public class CustomerBOImpl implements CustomerBO {
     @Override
     public CustomerDTO getCustomerName(String tel) throws SQLException, ClassNotFoundException {
         Customer customer = customerDAO.getCustomerName(tel);
-        return new CustomerDTO(customer.getId(),customer.getName(),customer.getNic(),customer.getAddress(),customer.getEmail(),customer.getTel(),customer.getStatus());
+        if (customer == null) {
+            return new CustomerDTO(customer.getId(),customer.getName(),customer.getNic(),customer.getAddress(),customer.getEmail(),customer.getTel(),customer.getStatus());
+        }
+        return null;
     }
 
     @Override

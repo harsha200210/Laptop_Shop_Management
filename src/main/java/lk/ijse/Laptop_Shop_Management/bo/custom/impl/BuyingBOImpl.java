@@ -46,7 +46,10 @@ public class BuyingBOImpl implements BuyingBO {
     @Override
     public SupplierDTO searchSupplier(int tel) throws SQLException, ClassNotFoundException {
         Supplier supplier = supplierDAO.searchSupplier(tel);
-        return new SupplierDTO(supplier.getId(),supplier.getName(),supplier.getNic(),supplier.getAddress(),supplier.getEmail(),supplier.getTel(),supplier.getStatus());
+        if (supplier != null){
+            return new SupplierDTO(supplier.getId(),supplier.getName(),supplier.getNic(),supplier.getAddress(),supplier.getEmail(),supplier.getTel(),supplier.getStatus());
+        }
+        return null;
     }
 
     @Override
