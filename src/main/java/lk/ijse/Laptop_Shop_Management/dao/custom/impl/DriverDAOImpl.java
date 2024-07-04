@@ -6,7 +6,6 @@ import javafx.scene.control.Alert;
 import lk.ijse.Laptop_Shop_Management.dao.SQLUtil;
 import lk.ijse.Laptop_Shop_Management.dao.custom.DriverDAO;
 import lk.ijse.Laptop_Shop_Management.entity.Driver;
-import lk.ijse.Laptop_Shop_Management.tdm.DriverTm;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -107,14 +106,14 @@ public class DriverDAOImpl implements DriverDAO {
     }
 
     @Override
-    public ObservableList<DriverTm> getDeleteDrivers() throws SQLException, ClassNotFoundException {
-        ObservableList<DriverTm> list = FXCollections.observableArrayList();
+    public ObservableList<Driver> getDeleteDrivers() throws SQLException, ClassNotFoundException {
+        ObservableList<Driver> list = FXCollections.observableArrayList();
 
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM driver");
 
         while (resultSet.next()){
             if (resultSet.getString("status").equals("Delete")) {
-                list.add(new DriverTm(resultSet.getString("name"), resultSet.getString("NIC"), resultSet.getString("address"), resultSet.getString("email"), resultSet.getInt("tel")));
+                list.add(new Driver(resultSet.getInt("driver_id"),resultSet.getString("name"),resultSet.getString("NIC"),resultSet.getString("address"),resultSet.getString("email"),resultSet.getInt("tel"), resultSet.getString("status")));
             }
         }
         return list;

@@ -13,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
 import lk.ijse.Laptop_Shop_Management.bo.custom.*;
 import lk.ijse.Laptop_Shop_Management.bo.custom.impl.*;
+import lk.ijse.Laptop_Shop_Management.dto.*;
+import lk.ijse.Laptop_Shop_Management.entity.Driver;
 import lk.ijse.Laptop_Shop_Management.tdm.DriverTm;
 import lk.ijse.Laptop_Shop_Management.tdm.ItemTm;
 
@@ -75,7 +77,7 @@ public class DeleteDataFormController {
 
     private void getDataType() {
         ObservableList<String> list = FXCollections.observableArrayList();
-        list.add("CustomerDTO");
+        list.add("Customer");
         list.add("Item");
         list.add("Supplier");
         list.add("Employee");
@@ -86,7 +88,7 @@ public class DeleteDataFormController {
     @FXML
     void deleteDataBoxAction(ActionEvent event) {
         switch (deleteDataBox.getValue()){
-            case "CustomerDTO" :
+            case "Customer" :
                 setCustomers();
                 break;
             case "Item" :
@@ -109,8 +111,10 @@ public class DeleteDataFormController {
         itemTable.setVisible(false);
         tableModel.setVisible(true);
         try {
-            ObservableList<DriverTm> list = deleteDataBO.getDeleteDrivers();
-            tableModel.setItems(list);
+            ObservableList<DriverDTO> list = deleteDataBO.getDeleteDrivers();
+            for (DriverDTO driverDTO : list) {
+                tableModel.getItems().add(new DriverTm(driverDTO.getName(), driverDTO.getNic(), driverDTO.getAddress(), driverDTO.getEmail(), driverDTO.getTel()));
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -120,8 +124,10 @@ public class DeleteDataFormController {
         itemTable.setVisible(false);
         tableModel.setVisible(true);
         try {
-            ObservableList<DriverTm> list = deleteDataBO.getDeleteEmployee();
-            tableModel.setItems(list);
+            ObservableList<EmployeeDTO> list = deleteDataBO.getDeleteEmployee();
+            for (EmployeeDTO employeeDTO : list){
+                tableModel.getItems().add(new DriverTm(employeeDTO.getName(), employeeDTO.getNic(), employeeDTO.getAddress(), employeeDTO.getEmail(), employeeDTO.getTel()));
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -131,8 +137,10 @@ public class DeleteDataFormController {
         itemTable.setVisible(false);
         tableModel.setVisible(true);
         try {
-            ObservableList<DriverTm> list = deleteDataBO.getDeleteSupplier();
-            tableModel.setItems(list);
+            ObservableList<SupplierDTO> list = deleteDataBO.getDeleteSupplier();
+            for (SupplierDTO supplierDTO : list){
+                tableModel.getItems().add(new DriverTm(supplierDTO.getName(),supplierDTO.getNic(),supplierDTO.getAddress(),supplierDTO.getEmail(),supplierDTO.getTel()));
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -142,8 +150,10 @@ public class DeleteDataFormController {
         itemTable.setVisible(true);
         tableModel.setVisible(false);
         try {
-            ObservableList<ItemTm> list = deleteDataBO.getDeleteItem();
-            itemTable.setItems(list);
+            ObservableList<ItemDTO> deleteItem = deleteDataBO.getDeleteItem();
+            for (ItemDTO item : deleteItem) {
+                itemTable.getItems().add(new ItemTm(item.getModel(), item.getQty(), item.getPrice()));
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -153,8 +163,10 @@ public class DeleteDataFormController {
         itemTable.setVisible(false);
         tableModel.setVisible(true);
         try {
-            ObservableList<DriverTm> list = deleteDataBO.getDeleteCustomer();
-            tableModel.setItems(list);
+            ObservableList<CustomerDTO> list = deleteDataBO.getDeleteCustomer();
+            for (CustomerDTO customerDTO : list) {
+                tableModel.getItems().add(new DriverTm(customerDTO.getName(), customerDTO.getNic(), customerDTO.getAddress(), customerDTO.getEmail(), customerDTO.getTel()));
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }

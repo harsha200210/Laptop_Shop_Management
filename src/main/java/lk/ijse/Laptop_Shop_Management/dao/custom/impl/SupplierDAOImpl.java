@@ -6,8 +6,6 @@ import javafx.scene.control.Alert;
 import lk.ijse.Laptop_Shop_Management.dao.SQLUtil;
 import lk.ijse.Laptop_Shop_Management.dao.custom.SupplierDAO;
 import lk.ijse.Laptop_Shop_Management.entity.Supplier;
-import lk.ijse.Laptop_Shop_Management.tdm.DriverTm;
-import lk.ijse.Laptop_Shop_Management.tdm.SupplierTm;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -79,42 +77,28 @@ public class SupplierDAOImpl implements SupplierDAO {
     }
 
     @Override
-    public ObservableList<SupplierTm> getSupplier() throws SQLException, ClassNotFoundException {
-        ObservableList<SupplierTm> obList = FXCollections.observableArrayList();
+    public ObservableList<Supplier> getSupplier() throws SQLException, ClassNotFoundException {
+        ObservableList<Supplier> obList = FXCollections.observableArrayList();
 
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM supplier");
 
         while (resultSet.next()){
             if (!resultSet.getString("status").equals("Delete")){
-                obList.add(new SupplierTm(resultSet.getString("name"),resultSet.getString("NIC"),resultSet.getString("address"),resultSet.getString("email"),resultSet.getInt("tel")));
+                obList.add(new Supplier(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getInt(6),resultSet.getString(7)));
             }
         }
         return obList;
     }
 
     @Override
-    public ObservableList<Integer> getSupplierID() throws SQLException, ClassNotFoundException {
-        ObservableList<Integer> list = FXCollections.observableArrayList();
-
-        ResultSet resultSet = SQLUtil.execute("SELECT supplier_id,status FROM supplier");
-
-        while (resultSet.next()){
-            if (!resultSet.getString(2).equals("Delete")){
-                list.add(resultSet.getInt(1));
-            }
-        }
-        return list;
-    }
-
-    @Override
-    public ObservableList<DriverTm> getDeleteSupplier() throws SQLException, ClassNotFoundException {
-        ObservableList<DriverTm> list = FXCollections.observableArrayList();
+    public ObservableList<Supplier> getDeleteSupplier() throws SQLException, ClassNotFoundException {
+        ObservableList<Supplier> list = FXCollections.observableArrayList();
 
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM supplier");
 
         while (resultSet.next()){
             if (resultSet.getString("status").equals("Delete")) {
-                list.add(new DriverTm(resultSet.getString("name"), resultSet.getString("NIC"), resultSet.getString("address"), resultSet.getString("email"), resultSet.getInt("tel")));
+                list.add(new Supplier(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getInt(6),resultSet.getString(7)));
             }
         }
         return list;

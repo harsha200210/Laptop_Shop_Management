@@ -64,7 +64,7 @@ public class LoginFormController {
     }
 
     private void navigateToTheMainForm() throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/main_form.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/main_form.fxml")));
 
         Stage stage = (Stage) this.loginForm.getScene().getWindow();
         stage.setScene(scene);
@@ -75,7 +75,7 @@ public class LoginFormController {
     @FXML
     void registerAction(MouseEvent event) {
         try {
-            loginAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/signUp_form.fxml")));
+            loginAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/signUp_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

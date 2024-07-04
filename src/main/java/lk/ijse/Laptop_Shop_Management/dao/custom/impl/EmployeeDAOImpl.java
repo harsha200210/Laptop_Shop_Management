@@ -6,7 +6,6 @@ import javafx.scene.control.Alert;
 import lk.ijse.Laptop_Shop_Management.dao.SQLUtil;
 import lk.ijse.Laptop_Shop_Management.dao.custom.EmployeeDAO;
 import lk.ijse.Laptop_Shop_Management.entity.Employee;
-import lk.ijse.Laptop_Shop_Management.tdm.DriverTm;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -78,14 +77,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public ObservableList<DriverTm> getDeleteEmployee() throws SQLException, ClassNotFoundException {
-        ObservableList<DriverTm> list = FXCollections.observableArrayList();
+    public ObservableList<Employee> getDeleteEmployee() throws SQLException, ClassNotFoundException {
+        ObservableList<Employee> list = FXCollections.observableArrayList();
 
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM employee");
 
         while (resultSet.next()){
             if (resultSet.getString("status").equals("Delete")) {
-                list.add(new DriverTm(resultSet.getString("name"), resultSet.getString("NIC"), resultSet.getString("address"), resultSet.getString("email"), resultSet.getInt("tel")));
+                list.add(new Employee(resultSet.getInt("employee_id"),resultSet.getString("name"),resultSet.getString("NIC"),resultSet.getString("address"),resultSet.getString("email"),resultSet.getInt("tel"), resultSet.getInt("user_id"), resultSet.getString("status")));
             }
         }
         return list;

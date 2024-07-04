@@ -176,7 +176,7 @@ public class MainFormController {
         try {
             getStyle();
             changeButtonStyle(btnCustomer);
-            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/customer_form.fxml")));
+            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/customer_form.fxml")));
 
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -186,7 +186,7 @@ public class MainFormController {
     @FXML
     void dashboardAction(ActionEvent event) {
         try {
-            Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/main_form.fxml")));
+            Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/main_form.fxml")));
             Stage stage = (Stage) this.mainAnchorPane.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
@@ -200,7 +200,7 @@ public class MainFormController {
         try {
             getStyle();
             changeButtonStyle(btnConfigurations);
-            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/configuration_form.fxml")));
+            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/configuration_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -211,7 +211,7 @@ public class MainFormController {
         try {
             getStyle();
             changeButtonStyle(btnDriver);
-            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/driver_form.fxml")));
+            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/driver_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -223,7 +223,7 @@ public class MainFormController {
             try {
                 getStyle();
                 changeButtonStyle(btnEmployee);
-                mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/employee_form.fxml")));
+                mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/employee_form.fxml")));
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
@@ -237,7 +237,7 @@ public class MainFormController {
         try {
             getStyle();
             changeButtonStyle(btnItem);
-            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/item_form.fxml")));
+            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/item_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -246,7 +246,7 @@ public class MainFormController {
     @FXML
     void logOutAction(MouseEvent event) {
         try {
-            Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/login_form.fxml")));
+            Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/login_form.fxml")));
             Stage stage = (Stage) this.mainAnchorPane.getScene().getWindow();
             stage.setScene(scene);
             stage.centerOnScreen();
@@ -261,7 +261,7 @@ public class MainFormController {
         try {
             getStyle();
             changeButtonStyle(btnSetting);
-            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/setting_form.fxml")));
+            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/setting_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -273,7 +273,7 @@ public class MainFormController {
             try {
                 getStyle();
                 changeButtonStyle(btnSupplier);
-                mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/supplier_form.fxml")));
+                mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/supplier_form.fxml")));
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
@@ -296,7 +296,7 @@ public class MainFormController {
     }
 
     private void loadFirstOrderIdForm() throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/firstOrderId_form.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/firstOrderId_form.fxml")));
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
@@ -305,7 +305,7 @@ public class MainFormController {
     }
 
     private void loadOrderForm() throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/order_form.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/order_form.fxml")));
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
@@ -316,7 +316,7 @@ public class MainFormController {
     void btnPurchaseAction(ActionEvent event) {
         Scene scene = null;
         try {
-            scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/buying_form.fxml")));
+            scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/buying_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -347,7 +347,7 @@ public class MainFormController {
     @FXML
     void btnOutOfStokeAction(ActionEvent event) {
         try {
-            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/outOfStoke_form.fxml")));
+            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/outOfStoke_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -358,7 +358,7 @@ public class MainFormController {
         try {
             getStyle();
             changeButtonStyle(btnOrders);
-            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/orderList_form.fxml")));
+            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/orderList_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -367,7 +367,7 @@ public class MainFormController {
     @FXML
     void emailAction(MouseEvent event) {
         try {
-            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/email_form.fxml")));
+            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/email_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -378,7 +378,7 @@ public class MainFormController {
         try {
             getStyle();
             changeButtonStyle(btnPurchases);
-            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/buyingList_form.fxml")));
+            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/buyingList_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -389,7 +389,7 @@ public class MainFormController {
         try {
             getStyle();
             changeButtonStyle(btnTrush);
-            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/deleteData_form.fxml")));
+            mainAnchorPane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/deleteData_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }

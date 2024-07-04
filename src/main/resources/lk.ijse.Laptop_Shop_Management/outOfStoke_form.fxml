@@ -18,7 +18,7 @@
       </TextField>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="784.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-search-24.png" />
+            <Image url="@icon/icons8-search-24.png" />
          </image>
       </ImageView>
       <Button layoutX="841.0" layoutY="48.0" mnemonicParsing="false" onAction="#goAction" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #1e90ff; -fx-background-radius: 3;" text="Go" textFill="WHITE">
@@ -26,7 +26,7 @@
             <Font name="System Italic" size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="itemTable" layoutX="27.0" layoutY="171.0" prefHeight="448.0" prefWidth="907.0" style="-fx-border-color: #1e90ff;" stylesheets="@../css/table.css">
+      <TableView fx:id="itemTable" layoutX="27.0" layoutY="171.0" prefHeight="448.0" prefWidth="907.0" style="-fx-border-color: #1e90ff;" stylesheets="@css/table.css">
          <columns>
             <TableColumn fx:id="colModel" prefWidth="452.0" text="Model" />
             <TableColumn fx:id="colQty" prefWidth="160.0" text="On Hand Quantity" />
@@ -35,7 +35,7 @@
       </TableView>
       <ImageView fitHeight="42.0" fitWidth="50.0" layoutX="34.0" layoutY="42.0" onMouseClicked="#backAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-back-48.png" />
+            <Image url="@icon/icons8-back-48.png" />
          </image>
       </ImageView>
    </children>

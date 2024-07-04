@@ -13,7 +13,7 @@
 
 <AnchorPane fx:id="purchaseForm" prefHeight="1050.0" prefWidth="1483.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Laptop_Shop_Management.controller.BuyingFormController">
    <children>
-      <AnchorPane layoutX="50.0" layoutY="19.0" prefHeight="1013.0" prefWidth="1383.0" style="-fx-background-color: white;" stylesheets="@../css/comboBox.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="40.0">
+      <AnchorPane layoutX="50.0" layoutY="19.0" prefHeight="1013.0" prefWidth="1383.0" style="-fx-background-color: white;" stylesheets="@css/comboBox.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="40.0">
          <children>
             <Label fx:id="labelDate" layoutX="960.0" layoutY="135.0" prefHeight="32.0" prefWidth="328.0" style="-fx-border-color: black;">
                <font>
@@ -30,7 +30,7 @@
                <graphic>
                   <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/icons8-add-100.png" />
+                        <Image url="@icon/icons8-add-100.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -42,7 +42,7 @@
                <graphic>
                   <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/icons8-buy-50.png" />
+                        <Image url="@icon/icons8-buy-50.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -54,7 +54,7 @@
                <graphic>
                   <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/icons8-close.gif" />
+                        <Image url="@icon/icons8-close.gif" />
                      </image>
                   </ImageView>
                </graphic>
@@ -93,7 +93,7 @@
                   <Font size="17.0" />
                </font>
             </TextField>
-            <TableView fx:id="purchaseTable" layoutX="40.0" layoutY="629.0" prefHeight="213.0" prefWidth="1304.0" stylesheets="@../css/table.css">
+            <TableView fx:id="purchaseTable" layoutX="40.0" layoutY="629.0" prefHeight="213.0" prefWidth="1304.0" stylesheets="@css/table.css">
                <columns>
                   <TableColumn fx:id="colId" prefWidth="160.0" text="Item ID" />
                   <TableColumn fx:id="colModel" prefWidth="351.0" text="Model" />
@@ -107,7 +107,7 @@
                <graphic>
                   <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/icons8-cart-30.png" />
+                        <Image url="@icon/icons8-cart-30.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -177,7 +177,7 @@
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/icons8-qr-code-64.png" />
+                        <Image url="@icon/icons8-qr-code-64.png" />
                      </image>
                   </ImageView>
                </graphic>

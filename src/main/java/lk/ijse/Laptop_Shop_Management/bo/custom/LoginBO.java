@@ -6,5 +6,6 @@ import lk.ijse.Laptop_Shop_Management.dto.UserDTO;
 import java.sql.SQLException;
 
 public interface LoginBO extends SuperBO {
+
     boolean checkUser(UserDTO userDTO) throws SQLException, ClassNotFoundException;
 }

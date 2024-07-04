@@ -82,7 +82,7 @@ public class SignUpFormController {
     }
 
     private void navigateToTheLoginForm() throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/login_form.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/login_form.fxml")));
         Stage stage = (Stage) signUpPage.getScene().getWindow();
         stage.setScene(scene);
         stage.show();

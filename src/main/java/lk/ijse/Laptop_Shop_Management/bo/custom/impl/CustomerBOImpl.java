@@ -19,11 +19,6 @@ public class CustomerBOImpl implements CustomerBO {
     }
 
     @Override
-    public int customerCount() throws SQLException, ClassNotFoundException {
-        return customerDAO.count();
-    }
-
-    @Override
     public CustomerDTO search(String nic) throws SQLException, ClassNotFoundException {
         Customer customer = customerDAO.search(nic);
         if (customer == null) {
@@ -63,17 +58,4 @@ public class CustomerBOImpl implements CustomerBO {
         return list;
     }
 
-    @Override
-    public CustomerDTO getCustomerName(String tel) throws SQLException, ClassNotFoundException {
-        Customer customer = customerDAO.getCustomerName(tel);
-        if (customer == null) {
-            return new CustomerDTO(customer.getId(),customer.getName(),customer.getNic(),customer.getAddress(),customer.getEmail(),customer.getTel(),customer.getStatus());
-        }
-        return null;
-    }
-
-    @Override
-    public ObservableList<DriverTm> getDeleteCustomer() throws SQLException, ClassNotFoundException {
-        return customerDAO.getDeleteCustomer();
-    }
 }

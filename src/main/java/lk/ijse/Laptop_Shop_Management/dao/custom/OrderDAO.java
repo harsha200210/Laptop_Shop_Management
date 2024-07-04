@@ -11,7 +11,7 @@ public interface OrderDAO extends SuperDAO {
 
     int getOrderCount() throws SQLException, ClassNotFoundException;
 
-    ObservableList<OrderListTm> getOrders() throws SQLException, ClassNotFoundException;
+    ObservableList<Order> getOrders() throws SQLException, ClassNotFoundException;
 
     boolean save(Order order) throws SQLException, ClassNotFoundException;
 }

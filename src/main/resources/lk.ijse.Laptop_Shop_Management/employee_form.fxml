@@ -25,7 +25,7 @@
       </TextField>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="804.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-search-24.png" />
+            <Image url="@icon/icons8-search-24.png" />
          </image>
       </ImageView>
       <Button layoutX="852.0" layoutY="38.0" mnemonicParsing="false" onAction="#goAction" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 3;" text="Go" textFill="WHITE">
@@ -38,7 +38,7 @@
       <TextField fx:id="txtAddress" layoutX="79.0" layoutY="236.0" onAction="#getAddressAction" onKeyReleased="#txtAddressAction" prefHeight="30.0" prefWidth="360.0" style="-fx-background-radius: 5;" />
       <TextField fx:id="txtEmail" layoutX="534.0" layoutY="236.0" onAction="#getEmailAction" onKeyReleased="#txtEmailAction" prefHeight="30.0" prefWidth="360.0" style="-fx-background-radius: 5;" />
       <TextField fx:id="txtTel" layoutX="79.0" layoutY="314.0" onAction="#getTelAction" onKeyReleased="#txtTelAction" prefHeight="30.0" prefWidth="360.0" style="-fx-background-radius: 5;" />
-      <TableView fx:id="employeeTable" layoutX="17.0" layoutY="452.0" onMouseClicked="#employeeTableAction" prefHeight="209.0" prefWidth="900.0" stylesheets="@../css/table.css">
+      <TableView fx:id="employeeTable" layoutX="17.0" layoutY="452.0" onMouseClicked="#employeeTableAction" prefHeight="209.0" prefWidth="900.0" stylesheets="@css/table.css">
          <columns>
             <TableColumn fx:id="colName" prefWidth="125.0" text="Name" />
             <TableColumn fx:id="colNic" prefWidth="138.0" text="NIC" />
@@ -55,7 +55,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-add-100.png" />
+                  <Image url="@icon/icons8-add-100.png" />
                </image>
             </ImageView>
          </graphic>
@@ -67,7 +67,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-update-64.png" />
+                  <Image url="@icon/icons8-update-64.png" />
                </image>
             </ImageView>
          </graphic>
@@ -79,7 +79,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-delete-64.png" />
+                  <Image url="@icon/icons8-delete-64.png" />
                </image>
             </ImageView>
          </graphic>
@@ -91,7 +91,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-clear-48.png" />
+                  <Image url="@icon/icons8-clear-48.png" />
                </image>
             </ImageView>
          </graphic>

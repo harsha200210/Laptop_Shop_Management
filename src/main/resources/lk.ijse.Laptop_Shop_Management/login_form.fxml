@@ -15,7 +15,7 @@
    <children>
       <ImageView fitHeight="540.0" fitWidth="562.0" layoutX="21.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/daily-graphic-designer-working-on-laptop.png" />
+            <Image url="@image/daily-graphic-designer-working-on-laptop.png" />
          </image>
       </ImageView>
       <AnchorPane fx:id="loginAnchorPane" layoutX="525.0" layoutY="30.0" prefHeight="540.0" prefWidth="430.0">
@@ -37,12 +37,12 @@
             </PasswordField>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="62.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-user-50%20(1).png" />
+                  <Image url="@icon/icons8-user-50%20(1).png" />
                </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="62.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-password-50%20(1).png" />
+                  <Image url="@icon/icons8-password-50%20(1).png" />
                </image>
             </ImageView>
             <Button layoutX="147.0" layoutY="382.0" mnemonicParsing="false" onAction="#btnLoginAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Login" textFill="WHITE">
@@ -54,7 +54,7 @@
             <Text fill="DODGERBLUE" layoutX="270.0" layoutY="504.0" onMouseClicked="#registerAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up" />
             <ImageView fitHeight="32.0" fitWidth="37.0" layoutX="362.0" layoutY="21.0" onMouseClicked="#exitAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-close-48.png" />
+                  <Image url="@icon/icons8-close-48.png" />
                </image>
             </ImageView>
          </children>

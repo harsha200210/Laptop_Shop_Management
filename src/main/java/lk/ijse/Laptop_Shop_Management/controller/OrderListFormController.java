@@ -12,6 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
 import lk.ijse.Laptop_Shop_Management.bo.custom.OrderListBO;
+import lk.ijse.Laptop_Shop_Management.dto.ItemDetailDTO;
+import lk.ijse.Laptop_Shop_Management.dto.OrderDTO;
 import lk.ijse.Laptop_Shop_Management.tdm.OrderItemTm;
 import lk.ijse.Laptop_Shop_Management.tdm.OrderListTm;
 
@@ -52,8 +54,8 @@ public class OrderListFormController {
 
     OrderListBO orderListBO = (OrderListBO) BOFactory.getBO(BOFactory.BOType.ORDERLIST);
 
-    private ObservableList<OrderListTm> orderList;
-    private ObservableList<OrderItemTm> itemList;
+    private ObservableList<OrderListTm> orderList = FXCollections.observableArrayList();
+    private ObservableList<OrderItemTm> itemList = FXCollections.observableArrayList();
 
     public void initialize(){
         setCellValueFactory();
@@ -63,7 +65,10 @@ public class OrderListFormController {
 
     private void loadItemDetails() {
         try {
-            itemList = orderListBO.getItems();
+            ObservableList<ItemDetailDTO> items = orderListBO.getItems();
+            for (ItemDetailDTO item : items) {
+                itemList.add(new OrderItemTm(item.getOrderId(), item.getItemId(), item.getQty()));
+            }
             OrderItemTable.setItems(itemList);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -72,7 +77,10 @@ public class OrderListFormController {
 
     private void loadOrderDetails() {
         try {
-            orderList = orderListBO.getOrders();
+            ObservableList<OrderDTO> orders = orderListBO.getOrders();
+            for (OrderDTO order : orders) {
+                orderList.add(new OrderListTm(order.getOrderId(),order.getCustomerId(),order.getDate(),order.getPrice(),order.getUserId()));
+            }
             orderTable.setItems(orderList);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -98,7 +106,7 @@ public class OrderListFormController {
     @FXML
     void searchAction(ActionEvent event) {
         for (int i = 0; i < itemList.size(); i++) {
-            if ((" " + txtSearch.getText()).equals(itemList.get(i).getOrderId())){
+            if (txtSearch.getText().equals(itemList.get(i).getOrderId())){
                 ObservableList<OrderItemTm> list = FXCollections.observableArrayList();
                 list.add(new OrderItemTm(itemList.get(i).getOrderId(),itemList.get(i).getItemId(),itemList.get(i).getQty()));
                 OrderItemTable.setItems(list);
@@ -106,7 +114,7 @@ public class OrderListFormController {
         }
 
         for (int i = 0; i < orderList.size(); i++) {
-            if ((" " + txtSearch.getText()).equals(orderList.get(i).getOrderId())){
+            if (txtSearch.getText().equals(orderList.get(i).getOrderId())){
                 ObservableList<OrderListTm> list = FXCollections.observableArrayList();
                 list.add(new OrderListTm(orderList.get(i).getOrderId(),orderList.get(i).getCustomerId(),orderList.get(i).getDate(),orderList.get(i).getPrice(),orderList.get(i).getUserId()));
                 orderTable.setItems(list);
@@ -118,11 +126,13 @@ public class OrderListFormController {
 
     @FXML
     void orderTableAction(MouseEvent event) {
-        OrderListTm selectedItem = orderTable.getSelectionModel().getSelectedItem();
-
         try {
-            ObservableList<OrderItemTm> list = orderListBO.getItem(selectedItem.getOrderId());
-            OrderItemTable.setItems(list);
+            OrderItemTable.getItems().clear();
+            OrderListTm selectedItem = orderTable.getSelectionModel().getSelectedItem();
+            ObservableList<ItemDetailDTO> item = orderListBO.getItem(selectedItem.getOrderId());
+            for (ItemDetailDTO itemDetail : item) {
+                OrderItemTable.getItems().add(new OrderItemTm(itemDetail.getOrderId(),itemDetail.getItemId(),itemDetail.getQty()));
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

@@ -25,7 +25,7 @@
       </TextField>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="805.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-search-24.png" />
+            <Image url="@icon/icons8-search-24.png" />
          </image>
       </ImageView>
       <Button layoutX="856.0" layoutY="36.0" mnemonicParsing="false" onAction="#goAction" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 3;" text="Go" textFill="WHITE">
@@ -48,7 +48,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-add-100.png" />
+                  <Image url="@icon/icons8-add-100.png" />
                </image>
             </ImageView>
          </graphic>
@@ -60,7 +60,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-update-64.png" />
+                  <Image url="@icon/icons8-update-64.png" />
                </image>
             </ImageView>
          </graphic>
@@ -72,7 +72,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-delete-64.png" />
+                  <Image url="@icon/icons8-delete-64.png" />
                </image>
             </ImageView>
          </graphic>
@@ -84,12 +84,12 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-clear-48.png" />
+                  <Image url="@icon/icons8-clear-48.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="driverTable" layoutX="21.0" layoutY="452.0" onMouseClicked="#driverTableAcion" prefHeight="209.0" prefWidth="893.0" stylesheets="@../css/table.css">
+      <TableView fx:id="driverTable" layoutX="21.0" layoutY="452.0" onMouseClicked="#driverTableAcion" prefHeight="209.0" prefWidth="893.0" stylesheets="@css/table.css">
          <columns>
             <TableColumn fx:id="colName" prefWidth="151.0" text="Name" />
             <TableColumn fx:id="colNic" prefWidth="176.0" text="NIC" />

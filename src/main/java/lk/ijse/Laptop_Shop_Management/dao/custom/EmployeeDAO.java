@@ -9,5 +9,6 @@ import lk.ijse.Laptop_Shop_Management.tdm.DriverTm;
 import java.sql.SQLException;
 
 public interface EmployeeDAO extends CrudDAO<Employee> , SuperDAO {
-    ObservableList<DriverTm> getDeleteEmployee() throws SQLException, ClassNotFoundException;
+
+    ObservableList<Employee> getDeleteEmployee() throws SQLException, ClassNotFoundException;
 }

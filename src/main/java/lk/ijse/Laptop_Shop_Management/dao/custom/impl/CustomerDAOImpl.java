@@ -68,14 +68,17 @@ public class CustomerDAOImpl implements CustomerDAO {
         return false;
     }
 
+    @Override
     public boolean update() throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE customer SET name = ?, address = ?, email = ?, tel = ? WHERE NIC = ?",customer.getName(),customer.getAddress(),customer.getEmail(),customer.getTel(),customer.getNic());
     }
 
+    @Override
     public boolean delete(String nic) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE customer SET status = ? WHERE NIC = ?","Delete",nic);
     }
 
+    @Override
     public ObservableList<Customer> getObject() throws SQLException, ClassNotFoundException {
         ObservableList<Customer> obList = FXCollections.observableArrayList();
 
@@ -89,6 +92,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         return obList;
     }
 
+    @Override
     public Customer getCustomerName(String tel) throws SQLException, ClassNotFoundException {
         Customer customer = new Customer();
 
@@ -105,14 +109,15 @@ public class CustomerDAOImpl implements CustomerDAO {
         return customer;
     }
 
-    public ObservableList<DriverTm> getDeleteCustomer() throws SQLException, ClassNotFoundException {
-        ObservableList<DriverTm> list = FXCollections.observableArrayList();
+    @Override
+    public ObservableList<Customer> getDeleteCustomer() throws SQLException, ClassNotFoundException {
+        ObservableList<Customer> list = FXCollections.observableArrayList();
 
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer");
 
         while (resultSet.next()){
             if (resultSet.getString("status").equals("Delete")) {
-                list.add(new DriverTm(resultSet.getString("name"), resultSet.getString("NIC"), resultSet.getString("address"), resultSet.getString("email"), resultSet.getInt("tel")));
+                list.add(new Customer(resultSet.getInt("customer_id"), resultSet.getString("name"), resultSet.getString("NIC"), resultSet.getString("address"), resultSet.getString("email"), resultSet.getInt("tel"), resultSet.getString("status")));
             }
         }
         return list;

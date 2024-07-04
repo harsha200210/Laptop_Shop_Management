@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="943.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Laptop_Shop_Management.controller.BuyingListFormController">
    <children>
-      <TableView fx:id="supplierItemTable" layoutX="32.0" layoutY="160.0" prefHeight="473.0" prefWidth="877.0" stylesheets="@../css/table.css">
+      <TableView fx:id="supplierItemTable" layoutX="32.0" layoutY="160.0" prefHeight="473.0" prefWidth="877.0" stylesheets="@css/table.css">
         <columns>
           <TableColumn fx:id="colItemId" prefWidth="177.0" text="Item ID" />
           <TableColumn fx:id="colSupplierId" prefWidth="198.0" text="Supplier ID" />
@@ -27,7 +27,7 @@
       </TextField>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="758.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-search-24.png" />
+            <Image url="@icon/icons8-search-24.png" />
          </image>
       </ImageView>
       <Button layoutX="806.0" layoutY="58.0" mnemonicParsing="false" onAction="#goAction" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #1e90ff; -fx-background-radius: 3;" text="Go" textFill="WHITE">

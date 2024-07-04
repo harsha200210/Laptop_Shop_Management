@@ -17,7 +17,7 @@
       <ComboBox fx:id="deleteDataBox" layoutX="393.0" layoutY="105.0" onAction="#deleteDataBoxAction" prefHeight="34.0" prefWidth="247.0" style="-fx-border-color: #1E90FF; -fx-background-radius: 5; -fx-border-radius: 5;" />
       <AnchorPane fx:id="tableAnchorPane" layoutX="7.0" layoutY="188.0" prefHeight="426.0" prefWidth="930.0">
          <children>
-            <TableView fx:id="tableModel" layoutX="14.0" layoutY="27.0" prefHeight="363.0" prefWidth="894.0" style="-fx-border-color: #1e90ff;" stylesheets="@../css/table.css">
+            <TableView fx:id="tableModel" layoutX="14.0" layoutY="27.0" prefHeight="363.0" prefWidth="894.0" style="-fx-border-color: #1e90ff;" stylesheets="@css/table.css">
                <columns>
                   <TableColumn fx:id="colName" prefWidth="215.0" text="Name" />
                   <TableColumn fx:id="colAddress" prefWidth="206.0" text="Address" />
@@ -25,7 +25,7 @@
                   <TableColumn fx:id="colTel" prefWidth="157.0" text="tel" />
                </columns>
             </TableView>
-            <TableView fx:id="itemTable" layoutX="15.0" layoutY="31.0" prefHeight="363.0" prefWidth="894.0" style="-fx-border-color: #1e90ff;" stylesheets="@../css/table.css">
+            <TableView fx:id="itemTable" layoutX="15.0" layoutY="31.0" prefHeight="363.0" prefWidth="894.0" style="-fx-border-color: #1e90ff;" stylesheets="@css/table.css">
                <columns>
                   <TableColumn fx:id="colModel" prefWidth="452.0" text="Model" />
                   <TableColumn fx:id="colQty" prefWidth="160.0" text="On Hand Quantity" />

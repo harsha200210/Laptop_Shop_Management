@@ -19,11 +19,6 @@ public class DriverBOImpl implements DriverBO {
     }
 
     @Override
-    public int driverCount() throws SQLException, ClassNotFoundException {
-        return driverDAO.count();
-    }
-
-    @Override
     public boolean delete(String nic) throws SQLException, ClassNotFoundException {
         return driverDAO.delete(nic);
     }
@@ -63,18 +58,4 @@ public class DriverBOImpl implements DriverBO {
         return driverDTOS;
     }
 
-    @Override
-    public ObservableList<String> getDriverName() throws SQLException, ClassNotFoundException {
-        return driverDAO.getDriverName();
-    }
-
-    @Override
-    public ObservableList<DriverTm> getDeleteDrivers() throws SQLException, ClassNotFoundException {
-        return driverDAO.getDeleteDrivers();
-    }
-
-    @Override
-    public int getDriverId(String name) throws SQLException, ClassNotFoundException {
-        return driverDAO.getDriverId(name);
-    }
 }

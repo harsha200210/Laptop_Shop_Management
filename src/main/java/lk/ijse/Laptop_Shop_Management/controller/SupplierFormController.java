@@ -187,13 +187,14 @@ public class SupplierFormController {
         }
     }
     private void loadAllSupplier(){
-        ObservableList<SupplierTm> obList = FXCollections.observableArrayList();
         try {
-            obList = supplierBO.getSupplier();
+            ObservableList<SupplierDTO> supplierDTOS = supplierBO.getSupplier();
+            for (SupplierDTO supplierDTO : supplierDTOS) {
+                supplierTable.getItems().add(new SupplierTm(supplierDTO.getName(),supplierDTO.getNic(),supplierDTO.getAddress(),supplierDTO.getEmail(),supplierDTO.getTel()));
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
-        supplierTable.setItems(obList);
     }
     @FXML
     void getAddressAction(ActionEvent event) {

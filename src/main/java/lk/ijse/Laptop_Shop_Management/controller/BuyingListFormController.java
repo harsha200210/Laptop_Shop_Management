@@ -1,5 +1,6 @@
 package lk.ijse.Laptop_Shop_Management.controller;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
 import lk.ijse.Laptop_Shop_Management.bo.custom.BuyingListBO;
+import lk.ijse.Laptop_Shop_Management.dto.ItemSupplierDTO;
 import lk.ijse.Laptop_Shop_Management.tdm.SupplierItemTm;
 import lk.ijse.Laptop_Shop_Management.util.Regex;
 
@@ -40,7 +42,7 @@ public class BuyingListFormController {
 
     BuyingListBO buyingListBO = (BuyingListBO) BOFactory.getBO(BOFactory.BOType.BUYINGLIST);
 
-    private ObservableList<SupplierItemTm> list;
+    private ObservableList<SupplierItemTm> list = FXCollections.observableArrayList();
 
     public void initialize(){
         setCellValueFactory();
@@ -49,7 +51,10 @@ public class BuyingListFormController {
 
     private void loadSupplierItemData() {
         try {
-            list = buyingListBO.getSupplierItem();
+            ObservableList<ItemSupplierDTO> supplierItem = buyingListBO.getSupplierItem();
+            for (ItemSupplierDTO itemSupplierDTO : supplierItem) {
+                list.add(new SupplierItemTm(itemSupplierDTO.getItemId(), itemSupplierDTO.getSupplierId(), itemSupplierDTO.getDate(), itemSupplierDTO.getQty(), itemSupplierDTO.getPrice()));
+            }
             supplierItemTable.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -73,7 +78,11 @@ public class BuyingListFormController {
     void searchAction(ActionEvent event) {
         if (searchValid()){
             try {
-                ObservableList<SupplierItemTm> list = buyingListBO.getSupplierItem(Integer.parseInt(txtSearch.getText()));
+                supplierItemTable.getItems().clear();
+                ObservableList<ItemSupplierDTO> supplierItem = buyingListBO.getSupplierItem(Integer.parseInt(txtSearch.getText()));
+                for (ItemSupplierDTO itemSupplierDTO : supplierItem) {
+                    supplierItemTable.getItems().add(new SupplierItemTm(itemSupplierDTO.getItemId(), itemSupplierDTO.getSupplierId(), itemSupplierDTO.getDate(), itemSupplierDTO.getQty(), itemSupplierDTO.getPrice()));
+                }
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

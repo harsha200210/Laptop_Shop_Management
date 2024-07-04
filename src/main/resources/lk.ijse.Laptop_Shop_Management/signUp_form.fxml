@@ -23,12 +23,12 @@
       <PasswordField fx:id="txtPassword" layoutX="114.0" layoutY="295.0" onKeyReleased="#txtPasswordAction" prefHeight="33.0" prefWidth="268.0" promptText="Password" style="-fx-background-radius: 5;" />
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="49.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-userDTO-50%20(1).png" />
+            <Image url="@icon/icons8-user-50%20(1).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="49.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-password-50%20(1).png" />
+            <Image url="@icon/icons8-password-50%20(1).png" />
          </image>
       </ImageView>
       <Text fill="DODGERBLUE" layoutX="60.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select User Type :" />
@@ -43,14 +43,14 @@
          <children>
             <ImageView fx:id="imageViewPP" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-customer-64.png" />
+                  <Image url="@icon/icons8-customer-64.png" />
                </image>
             </ImageView>
          </children>
       </StackPane>
       <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="27.0" layoutY="19.0" onMouseClicked="#backAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-back-48.png" />
+            <Image url="@icon/icons8-back-48.png" />
          </image>
       </ImageView>
    </children>

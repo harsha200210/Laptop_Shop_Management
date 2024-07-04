@@ -13,7 +13,7 @@ public interface DriverDAO extends CrudDAO<Driver> , SuperDAO {
 
     ObservableList<String> getDriverName() throws SQLException, ClassNotFoundException;
 
-    ObservableList<DriverTm> getDeleteDrivers() throws SQLException, ClassNotFoundException;
+    ObservableList<Driver> getDeleteDrivers() throws SQLException, ClassNotFoundException;
 
     int getDriverId(String name) throws SQLException, ClassNotFoundException;
 }

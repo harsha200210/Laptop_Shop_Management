@@ -40,7 +40,7 @@ public class FirstOrderIdFormController {
     }
 
     private void loadOrderForm() throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/order_form.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/order_form.fxml")));
         Stage stage = new Stage();
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setFullScreen(true);

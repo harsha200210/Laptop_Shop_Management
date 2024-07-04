@@ -7,10 +7,6 @@ import lk.ijse.Laptop_Shop_Management.entity.Delivery;
 import java.sql.SQLException;
 
 public class DeliveryDAOImpl implements DeliveryDAO {
-    @Override
-    public boolean changeDeliveryCharge(double inside, double out) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("UPDATE delivery SET inside_colombo = ?, out_of_colombo = ? WHERE delivery_id = (SELECT MAX(delivery_id))",inside,out);
-    }
 
     @Override
     public boolean save(Delivery delivery) throws SQLException, ClassNotFoundException {

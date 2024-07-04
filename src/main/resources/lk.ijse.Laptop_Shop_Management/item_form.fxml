@@ -22,7 +22,7 @@
       <TextField fx:id="txtModel" layoutX="63.0" layoutY="144.0" onAction="#getModelAction" onKeyReleased="#txtModelAction" prefHeight="30.0" prefWidth="360.0" style="-fx-background-radius: 5;" />
       <TextField fx:id="txtQty" layoutX="544.0" layoutY="144.0" onAction="#getQtyAction" onKeyReleased="#txtQtyAction" prefHeight="30.0" prefWidth="360.0" style="-fx-background-radius: 5;" />
       <TextField fx:id="txtPrice" layoutX="63.0" layoutY="232.0" onKeyReleased="#txtPriceAction" prefHeight="30.0" prefWidth="360.0" style="-fx-background-radius: 5;" />
-      <TableView fx:id="itemTable" layoutX="19.0" layoutY="452.0" onMouseClicked="#itemTableAction" prefHeight="209.0" prefWidth="897.0" stylesheets="@../css/table.css">
+      <TableView fx:id="itemTable" layoutX="19.0" layoutY="452.0" onMouseClicked="#itemTableAction" prefHeight="209.0" prefWidth="897.0" stylesheets="@css/table.css">
          <columns>
             <TableColumn fx:id="colModel" prefWidth="366.0" text="Model" />
             <TableColumn fx:id="colQty" prefWidth="271.0" text="On Hand Quantity" />
@@ -36,7 +36,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-add-100.png" />
+                  <Image url="@icon/icons8-add-100.png" />
                </image>
             </ImageView>
          </graphic>
@@ -48,7 +48,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-update-64.png" />
+                  <Image url="@icon/icons8-update-64.png" />
                </image>
             </ImageView>
          </graphic>
@@ -60,7 +60,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-delete-64.png" />
+                  <Image url="@icon/icons8-delete-64.png" />
                </image>
             </ImageView>
          </graphic>
@@ -72,7 +72,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-clear-48.png" />
+                  <Image url="@icon/icons8-clear-48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -86,7 +86,7 @@
       </TextField>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="770.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-search-24.png" />
+            <Image url="@icon/icons8-search-24.png" />
          </image>
       </ImageView>
       <Button layoutX="834.0" layoutY="38.0" mnemonicParsing="false" onAction="#goAction" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 3;" text="Go" textFill="WHITE">
@@ -96,7 +96,7 @@
       </Button>
       <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="348.0" layoutY="28.0" onMouseClicked="#generateQrFormAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-qr-code-64.png" />
+            <Image url="@icon/icons8-qr-code-64.png" />
          </image>
       </ImageView>
    </children>

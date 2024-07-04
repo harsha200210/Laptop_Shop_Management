@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import lk.ijse.Laptop_Shop_Management.dao.SQLUtil;
 import lk.ijse.Laptop_Shop_Management.dao.custom.ItemDetailDAO;
 import lk.ijse.Laptop_Shop_Management.entity.ItemDetail;
-import lk.ijse.Laptop_Shop_Management.tdm.OrderItemTm;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,13 +12,13 @@ import java.util.List;
 
 public class ItemDetailDAOImpl implements ItemDetailDAO {
     @Override
-    public ObservableList<OrderItemTm> getItems() throws SQLException, ClassNotFoundException {
-        ObservableList<OrderItemTm> list = FXCollections.observableArrayList();
+    public ObservableList<ItemDetail> getItems() throws SQLException, ClassNotFoundException {
+        ObservableList<ItemDetail> list = FXCollections.observableArrayList();
 
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM item_detail");
 
         while (resultSet.next()){
-            list.add(new OrderItemTm(resultSet.getString("order_id"),resultSet.getInt("item_id"),resultSet.getInt("qty")));
+            list.add(new ItemDetail(resultSet.getInt("item_id"),resultSet.getString("order_id"),resultSet.getInt("qty")));
         }
         return list;
     }
@@ -41,13 +40,13 @@ public class ItemDetailDAOImpl implements ItemDetailDAO {
     }
 
     @Override
-    public ObservableList<OrderItemTm> getItem(String orderId) throws SQLException, ClassNotFoundException {
-        ObservableList<OrderItemTm> list = FXCollections.observableArrayList();
+    public ObservableList<ItemDetail> getItem(String orderId) throws SQLException, ClassNotFoundException {
+        ObservableList<ItemDetail> list = FXCollections.observableArrayList();
 
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM item_detail WHERE order_id = ?",orderId);
 
         while (resultSet.next()){
-            list.add(new OrderItemTm(resultSet.getString("order_id"),resultSet.getInt("item_id"),resultSet.getInt("qty")));
+            list.add(new ItemDetail(resultSet.getInt("item_id"),resultSet.getString("order_id"),resultSet.getInt("qty")));
         }
         return list;
     }

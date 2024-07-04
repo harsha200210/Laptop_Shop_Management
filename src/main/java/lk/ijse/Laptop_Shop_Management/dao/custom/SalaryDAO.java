@@ -6,6 +6,7 @@ import lk.ijse.Laptop_Shop_Management.entity.Salary;
 import java.sql.SQLException;
 
 public interface SalaryDAO extends SuperDAO {
+
     boolean save(Salary salary) throws SQLException, ClassNotFoundException;
 
     boolean update(Salary salary) throws SQLException, ClassNotFoundException;

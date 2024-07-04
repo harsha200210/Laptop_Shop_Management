@@ -31,7 +31,7 @@ public class SettingFormController {
     @FXML
     void userSettingAction(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/password_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/password_form.fxml"));
             Parent root = loader.load();
             PasswordFormController controller = loader.getController();
             controller.setSettingFormController(this);
@@ -54,7 +54,7 @@ public class SettingFormController {
             removeStyle();
             changeStyleLine(lineUserSetting);
             try {
-                changePane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/userSetting_form.fxml")));
+                changePane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/userSetting_form.fxml")));
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }

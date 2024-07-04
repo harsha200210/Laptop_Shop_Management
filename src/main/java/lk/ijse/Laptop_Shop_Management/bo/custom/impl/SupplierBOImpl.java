@@ -1,5 +1,6 @@
 package lk.ijse.Laptop_Shop_Management.bo.custom.impl;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.Laptop_Shop_Management.bo.custom.SupplierBO;
 import lk.ijse.Laptop_Shop_Management.dao.DAOFactory;
@@ -16,11 +17,6 @@ public class SupplierBOImpl implements SupplierBO {
 
     public SupplierBOImpl() {
         this.supplierDAO = (SupplierDAO) DAOFactory.getDAO(DAOFactory.DAOType.SUPPLIER);
-    }
-
-    @Override
-    public int supplierCount() throws SQLException, ClassNotFoundException {
-        return supplierDAO.count();
     }
 
     @Override
@@ -54,26 +50,14 @@ public class SupplierBOImpl implements SupplierBO {
     }
 
     @Override
-    public ObservableList<SupplierTm> getSupplier() throws SQLException, ClassNotFoundException {
-        return supplierDAO.getSupplier();
-    }
+    public ObservableList<SupplierDTO> getSupplier() throws SQLException, ClassNotFoundException {
+        ObservableList<SupplierDTO> list = FXCollections.observableArrayList();
+        ObservableList<Supplier> suppliers = supplierDAO.getSupplier();
 
-    @Override
-    public ObservableList<Integer> getSupplierID() throws SQLException, ClassNotFoundException {
-        return supplierDAO.getSupplierID();
-    }
-
-    @Override
-    public ObservableList<DriverTm> getDeleteSupplier() throws SQLException, ClassNotFoundException {
-        return supplierDAO.getDeleteSupplier();
-    }
-
-    @Override
-    public SupplierDTO searchSupplier(int tel) throws SQLException, ClassNotFoundException {
-        Supplier supplier = supplierDAO.searchSupplier(tel);
-        if (supplier != null){
-            return new SupplierDTO(supplier.getId(),supplier.getName(),supplier.getNic(),supplier.getAddress(),supplier.getEmail(),supplier.getTel(),supplier.getStatus());
+        for (Supplier supplier : suppliers) {
+            list.add(new SupplierDTO(supplier.getId(),supplier.getName(),supplier.getNic(),supplier.getAddress(),supplier.getEmail(),supplier.getTel(),supplier.getStatus()));
         }
-        return null;
+        return list;
     }
+
 }

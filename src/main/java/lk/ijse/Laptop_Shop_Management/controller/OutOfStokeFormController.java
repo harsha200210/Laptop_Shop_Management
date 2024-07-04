@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.Laptop_Shop_Management.bo.BOFactory;
 import lk.ijse.Laptop_Shop_Management.bo.custom.OutOfStokeBO;
+import lk.ijse.Laptop_Shop_Management.dto.ItemDTO;
 import lk.ijse.Laptop_Shop_Management.tdm.ItemTm;
 
 public class OutOfStokeFormController {
@@ -49,7 +50,10 @@ public class OutOfStokeFormController {
 
     private void loadData() {
         try {
-            list = outOfStokeBO.outOfStokeItem();
+            ObservableList<ItemDTO> itemDTOS = outOfStokeBO.outOfStokeItem();
+            for (ItemDTO itemDTO : itemDTOS) {
+                list.add(new ItemTm(itemDTO.getModel(), itemDTO.getQty(), itemDTO.getPrice()));
+            }
             itemTable.setItems(list);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -65,7 +69,7 @@ public class OutOfStokeFormController {
     @FXML
     void backAction(MouseEvent event) {
         try {
-            Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/main_form.fxml")));
+            Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/main_form.fxml")));
             Stage stage = (Stage) this.outOfStokeAnchorPane.getScene().getWindow();
             stage.setScene(scene);
             stage.show();

@@ -25,7 +25,7 @@
       </TextField>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="774.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-search-24.png" />
+            <Image url="@icon/icons8-search-24.png" />
          </image>
       </ImageView>
       <Button layoutX="831.0" layoutY="38.0" mnemonicParsing="false" onAction="#goAction" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #1e90ff; -fx-background-radius: 3;" text="Go" textFill="WHITE">
@@ -33,7 +33,7 @@
             <Font name="System Italic" size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="customerTable" layoutX="13.0" layoutY="452.0" onMouseClicked="#customerTableAction" prefHeight="209.0" prefWidth="907.0" stylesheets="@../css/table.css">
+      <TableView fx:id="customerTable" layoutX="13.0" layoutY="452.0" onMouseClicked="#customerTableAction" prefHeight="209.0" prefWidth="907.0" stylesheets="@css/table.css">
         <columns>
           <TableColumn fx:id="colName" prefWidth="162.0" text="Name" />
             <TableColumn fx:id="colNIC" prefWidth="186.0" text="NIC" />
@@ -57,7 +57,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-clear-48.png" />
+                  <Image url="@icon/icons8-clear-48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -69,7 +69,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-delete-64.png" />
+                  <Image url="@icon/icons8-delete-64.png" />
                </image>
             </ImageView>
          </graphic>
@@ -81,7 +81,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-update-64.png" />
+                  <Image url="@icon/icons8-update-64.png" />
                </image>
             </ImageView>
          </graphic>
@@ -93,7 +93,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-add-100.png" />
+                  <Image url="@icon/icons8-add-100.png" />
                </image>
             </ImageView>
          </graphic>

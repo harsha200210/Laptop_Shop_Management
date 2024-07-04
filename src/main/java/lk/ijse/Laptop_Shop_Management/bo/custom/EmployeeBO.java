@@ -10,7 +10,6 @@ import lk.ijse.Laptop_Shop_Management.tdm.EmployeeTm;
 import java.sql.SQLException;
 
 public interface EmployeeBO extends SuperBO {
-    int employeeCount() throws SQLException, ClassNotFoundException;
 
     boolean delete(String nic) throws SQLException, ClassNotFoundException;
 
@@ -23,8 +22,6 @@ public interface EmployeeBO extends SuperBO {
     EmployeeDTO search(String nic) throws SQLException, ClassNotFoundException;
 
     ObservableList<EmployeeTm> getEmployee() throws SQLException, ClassNotFoundException;
-
-    ObservableList<DriverTm> getDeleteEmployee() throws SQLException, ClassNotFoundException;
 
     boolean save(SalaryDTO salaryDTO) throws SQLException, ClassNotFoundException;
 

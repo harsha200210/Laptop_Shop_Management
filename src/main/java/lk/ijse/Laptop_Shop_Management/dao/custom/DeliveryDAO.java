@@ -7,7 +7,5 @@ import java.sql.SQLException;
 
 public interface DeliveryDAO extends SuperDAO {
 
-    boolean changeDeliveryCharge(double inside, double out) throws SQLException, ClassNotFoundException;
-
     boolean save(Delivery delivery) throws SQLException, ClassNotFoundException;
 }

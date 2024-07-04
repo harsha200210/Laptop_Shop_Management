@@ -34,11 +34,6 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public int employeeCount() throws SQLException, ClassNotFoundException {
-        return employeeDAO.count();
-    }
-
-    @Override
     public boolean delete(String nic) throws SQLException, ClassNotFoundException {
         return employeeDAO.delete(nic);
     }
@@ -71,11 +66,6 @@ public class EmployeeBOImpl implements EmployeeBO {
     @Override
     public ObservableList<EmployeeTm> getEmployee() throws SQLException, ClassNotFoundException {
         return queryDAO.getEmployee();
-    }
-
-    @Override
-    public ObservableList<DriverTm> getDeleteEmployee() throws SQLException, ClassNotFoundException {
-        return employeeDAO.getDeleteEmployee();
     }
 
     @Override

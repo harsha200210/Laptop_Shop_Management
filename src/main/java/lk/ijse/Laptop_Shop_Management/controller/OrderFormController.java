@@ -179,7 +179,7 @@ public class OrderFormController {
     void addNewCustomerAction(ActionEvent event) {
         Scene scene = null;
         try {
-            scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/customer_form.fxml")));
+            scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/customer_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -244,7 +244,7 @@ public class OrderFormController {
     }
 
     private void loadData() {
-        Image img = new Image("/icon/icons8-minimize-48.png");
+        Image img = new Image("/lk.ijse.Laptop_Shop_Management/icon/icons8-minimize-48.png");
         ImageView view = new ImageView(img);
         view.setFitHeight(15);
         view.setFitWidth(15);
@@ -356,7 +356,7 @@ public class OrderFormController {
 
     private void navigatePayment() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/payment_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk.ijse.Laptop_Shop_Management/payment_form.fxml"));
             Parent node = loader.load();
             PaymentFormController controller = loader.getController();
             controller.setOrderFormController(this);
@@ -404,7 +404,7 @@ public class OrderFormController {
     public void btnNewOrder(ActionEvent event) {
         try {
             exitStage();
-            Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/order_form.fxml")));
+            Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/order_form.fxml")));
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(scene);

@@ -8,7 +8,6 @@ import lk.ijse.Laptop_Shop_Management.tdm.DriverTm;
 import java.sql.SQLException;
 
 public interface DriverBO extends SuperBO {
-    int driverCount() throws SQLException, ClassNotFoundException;
 
     boolean delete(String nic) throws SQLException, ClassNotFoundException;
 
@@ -22,9 +21,4 @@ public interface DriverBO extends SuperBO {
 
     ObservableList<DriverDTO> getDriver() throws SQLException, ClassNotFoundException;
 
-    ObservableList<String> getDriverName() throws SQLException, ClassNotFoundException;
-
-    ObservableList<DriverTm> getDeleteDrivers() throws SQLException, ClassNotFoundException;
-
-    int getDriverId(String name) throws SQLException, ClassNotFoundException;
 }

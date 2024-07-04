@@ -61,7 +61,7 @@ public class GenerateQrFormController {
     @FXML
     void backAction(MouseEvent event) {
         try {
-            itemFormController.itemForm.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/view/item_form.fxml")));
+            itemFormController.itemForm.getChildren().setAll((Node) FXMLLoader.load(getClass().getResource("/lk.ijse.Laptop_Shop_Management/item_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

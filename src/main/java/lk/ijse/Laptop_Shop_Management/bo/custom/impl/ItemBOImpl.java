@@ -1,5 +1,6 @@
 package lk.ijse.Laptop_Shop_Management.bo.custom.impl;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.Laptop_Shop_Management.bo.custom.ItemBO;
 import lk.ijse.Laptop_Shop_Management.dao.DAOFactory;
@@ -21,11 +22,6 @@ public class ItemBOImpl implements ItemBO {
 
     public ItemBOImpl() {
         this.itemDAO = (ItemDAO) DAOFactory.getDAO(DAOFactory.DAOType.ITEM);
-    }
-
-    @Override
-    public int itemCount() throws SQLException, ClassNotFoundException {
-        return itemDAO.count();
     }
 
     @Override
@@ -59,18 +55,19 @@ public class ItemBOImpl implements ItemBO {
     }
 
     @Override
-    public ObservableList<ItemTm> getItem() throws SQLException, ClassNotFoundException {
-        return itemDAO.getItem();
+    public ObservableList<ItemDTO> getItem() throws SQLException, ClassNotFoundException {
+        ObservableList<ItemDTO> list = FXCollections.observableArrayList();
+        ObservableList<Item> items = itemDAO.getItem();
+
+        for (Item item : items) {
+            list.add(new ItemDTO(item.getId(), item.getModel(), item.getQty(), item.getPrice(), item.getStatus()));
+        }
+        return list;
     }
 
     @Override
     public ObservableList<Integer> getItemId() throws SQLException, ClassNotFoundException {
         return itemDAO.getItemId();
-    }
-
-    @Override
-    public ObservableList<Integer> getOrderItem() throws SQLException, ClassNotFoundException {
-        return itemDAO.getOrderItem();
     }
 
     @Override
@@ -80,45 +77,5 @@ public class ItemBOImpl implements ItemBO {
             return new ItemDTO(item.getId(),item.getModel(),item.getQty(),item.getPrice(),item.getStatus());
         }
         return null;
-    }
-
-    @Override
-    public ObservableList<ItemTm> getDeleteItem() throws SQLException, ClassNotFoundException {
-        return itemDAO.getDeleteItem();
-    }
-
-    @Override
-    public ObservableList<ItemTm> outOfStokeItem() throws SQLException, ClassNotFoundException {
-        return itemDAO.outOfStokeItem();
-    }
-
-    @Override
-    public boolean updateQty(List<ItemDetailDTO> itemDetailDTO) throws SQLException, ClassNotFoundException {
-        ArrayList<ItemDetail> list = new ArrayList<>();
-        for (ItemDetailDTO itemDetailDTO1 : itemDetailDTO) {
-            list.add(new ItemDetail(itemDetailDTO1.getItemId(),itemDetailDTO1.getOrderId(),itemDetailDTO1.getQty()));
-        }
-        return itemDAO.updateQty(list);
-    }
-
-    @Override
-    public boolean updateQty(ItemDetailDTO i) throws SQLException, ClassNotFoundException {
-        ItemDetail itemDetail = new ItemDetail(i.getItemId(),i.getOrderId(),i.getQty());
-        return itemDAO.updateQty(itemDetail);
-    }
-
-    @Override
-    public boolean updateSupplierQty(List<ItemSupplierDTO> itemSupplierDTO) throws SQLException, ClassNotFoundException {
-        ArrayList<ItemSupplier> list = new ArrayList<>();
-        for (ItemSupplierDTO itemSupplierDTO1 : itemSupplierDTO) {
-            list.add(new ItemSupplier(itemSupplierDTO1.getItemId(),itemSupplierDTO1.getSupplierId(),itemSupplierDTO1.getDate(),itemSupplierDTO1.getQty(),itemSupplierDTO1.getPrice()));
-        }
-        return itemDAO.updateSupplierQty(list);
-    }
-
-    @Override
-    public boolean setQty(ItemSupplierDTO i) throws SQLException, ClassNotFoundException {
-        ItemSupplier itemSupplier = new ItemSupplier(i.getItemId(),i.getSupplierId(),i.getDate(),i.getQty(),i.getPrice());
-        return itemDAO.setQty(itemSupplier);
     }
 }

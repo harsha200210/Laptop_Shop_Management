@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import lk.ijse.Laptop_Shop_Management.dao.SQLUtil;
 import lk.ijse.Laptop_Shop_Management.dao.custom.OrderDAO;
 import lk.ijse.Laptop_Shop_Management.entity.Order;
-import lk.ijse.Laptop_Shop_Management.tdm.OrderListTm;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,13 +20,13 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public ObservableList<OrderListTm> getOrders() throws SQLException, ClassNotFoundException {
-        ObservableList<OrderListTm> list = FXCollections.observableArrayList();
+    public ObservableList<Order> getOrders() throws SQLException, ClassNotFoundException {
+        ObservableList<Order> list = FXCollections.observableArrayList();
 
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM orders");
 
         while (resultSet.next()){
-            list.add(new OrderListTm(resultSet.getString("order_id"),resultSet.getInt("customer_id"),resultSet.getDate("date"),resultSet.getDouble("total_amount"),resultSet.getInt("user_id")));
+            list.add(new Order(resultSet.getString("order_id"),resultSet.getDate("date"),resultSet.getDouble("total_amount"),resultSet.getInt("customer_id"),resultSet.getInt("user_id")));
         }
         return list;
     }

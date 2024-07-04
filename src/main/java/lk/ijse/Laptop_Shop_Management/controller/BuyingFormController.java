@@ -141,7 +141,7 @@ public class BuyingFormController {
     }
 
     private void loadData() {
-        Image img = new Image("/icon/icons8-minimize-48.png");
+        Image img = new Image("/lk.ijse.Laptop_Shop_Management/icon/icons8-minimize-48.png");
         ImageView view = new ImageView(img);
         view.setFitHeight(15);
         view.setFitWidth(15);
@@ -234,7 +234,7 @@ public class BuyingFormController {
     void btnNewItemAction(ActionEvent event) {
         Scene scene = null;
         try {
-            scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/item_form.fxml")));
+            scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/item_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -255,7 +255,7 @@ public class BuyingFormController {
     void btnNewOrder(ActionEvent event) {
         try {
             exitStage();
-            Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/buying_form.fxml")));
+            Scene scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/buying_form.fxml")));
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(scene);
@@ -333,7 +333,7 @@ public class BuyingFormController {
     void btnNewSupplierAction(ActionEvent event) {
         Scene scene = null;
         try {
-            scene = new Scene(FXMLLoader.load(this.getClass().getResource("/view/supplier_form.fxml")));
+            scene = new Scene(FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/supplier_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

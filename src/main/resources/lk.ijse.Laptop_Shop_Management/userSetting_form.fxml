@@ -15,7 +15,7 @@
          <children>
             <ImageView fx:id="imageViewPP" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-customer-64.png" />
+                  <Image url="@icon/icons8-customer-64.png" />
                </image>
             </ImageView>
          </children>

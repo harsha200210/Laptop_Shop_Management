@@ -28,7 +28,7 @@ public class ConfigurationFormController {
         removeStyle();
         changeStyleLine(lineDelievrySetting);
         try {
-            changePane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/deliverySetting_form.fxml")));
+            changePane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/deliverySetting_form.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -44,7 +44,7 @@ public class ConfigurationFormController {
         removeStyle();
         changeStyleLine(lineTaxRate);
         try {
-            changePane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/view/taxRate_from.fxml")));
+            changePane.getChildren().setAll((Node) FXMLLoader.load(this.getClass().getResource("/lk.ijse.Laptop_Shop_Management/taxRate_from.fxml")));
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

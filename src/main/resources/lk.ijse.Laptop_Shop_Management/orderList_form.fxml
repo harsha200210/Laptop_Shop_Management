@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="943.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Laptop_Shop_Management.controller.OrderListFormController">
    <children>
-      <TableView fx:id="orderTable" layoutX="14.0" layoutY="113.0" onMouseClicked="#orderTableAction" prefHeight="280.0" prefWidth="920.0" stylesheets="@../css/table.css">
+      <TableView fx:id="orderTable" layoutX="14.0" layoutY="113.0" onMouseClicked="#orderTableAction" prefHeight="280.0" prefWidth="920.0" stylesheets="@css/table.css">
         <columns>
           <TableColumn fx:id="colOrderId" prefWidth="177.0" text="Order ID" />
           <TableColumn fx:id="colCustomerId" prefWidth="199.0" text="Customer ID" />
@@ -20,7 +20,7 @@
             <TableColumn fx:id="colUserId" prefWidth="152.0" text="User ID" />
         </columns>
       </TableView>
-      <TableView fx:id="OrderItemTable" layoutX="227.0" layoutY="411.0" prefHeight="240.0" prefWidth="495.0" stylesheets="@../css/table.css">
+      <TableView fx:id="OrderItemTable" layoutX="227.0" layoutY="411.0" prefHeight="240.0" prefWidth="495.0" stylesheets="@css/table.css">
          <columns>
             <TableColumn fx:id="colId" prefWidth="176.0" text="Order ID" />
             <TableColumn fx:id="colItemId" prefWidth="191.0" text="Item ID" />
@@ -34,7 +34,7 @@
       </TextField>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="784.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-search-24.png" />
+            <Image url="@icon/icons8-search-24.png" />
          </image>
       </ImageView>
       <Button layoutX="841.0" layoutY="48.0" mnemonicParsing="false" onAction="#goAction" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #1e90ff; -fx-background-radius: 3;" text="Go" textFill="WHITE">

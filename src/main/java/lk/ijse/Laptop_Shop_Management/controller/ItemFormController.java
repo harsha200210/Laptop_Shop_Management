@@ -171,13 +171,14 @@ public class ItemFormController {
         }
     }
     private void loadAllItem(){
-        ObservableList<ItemTm> obList = FXCollections.observableArrayList();
         try {
-            obList = itemBO.getItem();
+            ObservableList<ItemDTO> items = itemBO.getItem();
+            for (ItemDTO itemDTO : items){
+                itemTable.getItems().add(new ItemTm(itemDTO.getModel(), itemDTO.getQty(), itemDTO.getPrice()));
+            }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
-        itemTable.setItems(obList);
     }
 
     @FXML
@@ -204,7 +205,7 @@ public class ItemFormController {
     @FXML
     void generateQrFormAction(MouseEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/generateQr_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk.ijse.Laptop_Shop_Management/generateQr_form.fxml"));
             Node node = loader.load();
             GenerateQrFormController controller = loader.getController();
             controller.setItemFormController(this);

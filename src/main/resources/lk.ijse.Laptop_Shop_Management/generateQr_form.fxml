@@ -16,7 +16,7 @@
    <children>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="29.0" layoutY="22.0" onMouseClicked="#backAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/icons8-back-48.png" />
+            <Image url="@icon/icons8-back-48.png" />
          </image>
       </ImageView>
       <TextField fx:id="txtModel" layoutX="285.0" layoutY="46.0" onAction="#txtModelAction" prefHeight="32.0" prefWidth="270.0" promptText="search model">
@@ -28,7 +28,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-qr-code-48.png" />
+                  <Image url="@icon/icons8-qr-code-48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -39,7 +39,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/icons8-download.gif" />
+                        <Image url="@icon/icons8-download.gif" />
                      </image>
                   </ImageView>
                </graphic>
@@ -51,7 +51,7 @@
             </Label>
             <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="222.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-correct-48.png" />
+                  <Image url="@icon/icons8-correct-48.png" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="32.0" layoutX="35.0" layoutY="228.0" stroke="DODGERBLUE" strokeType="INSIDE" width="478.0">
@@ -68,7 +68,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/icons8-folder-50.png" />
+                        <Image url="@icon/icons8-folder-50.png" />
                      </image>
                   </ImageView>
                </graphic>
