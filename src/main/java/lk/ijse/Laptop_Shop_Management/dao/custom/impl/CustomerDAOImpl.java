@@ -6,7 +6,6 @@ import javafx.scene.control.Alert;
 import lk.ijse.Laptop_Shop_Management.dao.SQLUtil;
 import lk.ijse.Laptop_Shop_Management.dao.custom.CustomerDAO;
 import lk.ijse.Laptop_Shop_Management.entity.Customer;
-import lk.ijse.Laptop_Shop_Management.tdm.DriverTm;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

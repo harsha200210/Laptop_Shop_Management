@@ -4,141 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9562f587-9ed4-4d7c-95cd-9811a9c3fb39" name="Changes" comment="null value error fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="9562f587-9ed4-4d7c-95cd-9811a9c3fb39" name="Changes" comment="add layered architecture">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/BuyingListBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/BuyingListBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/CustomerBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/CustomerBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/DeleteDataBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/DeleteDataBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/DeliverySettingBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/DeliverySettingBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/DriverBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/DriverBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/EmployeeBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/EmployeeBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/GenerateQrBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/GenerateQrBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/ItemBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/ItemBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/LoginBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/LoginBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/OrderListBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/OrderListBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/OutOfStokeBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/OutOfStokeBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/SupplierBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/SupplierBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/BuyingListBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/BuyingListBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/CustomerBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/CustomerBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/DeleteDataBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/DeleteDataBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/DriverBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/DriverBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/EmployeeBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/EmployeeBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/ItemBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/ItemBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/OrderListBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/OrderListBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/OutOfStokeBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/OutOfStokeBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/SupplierBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/bo/custom/impl/SupplierBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/BuyingFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/BuyingFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/BuyingListFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/BuyingListFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/ConfigurationFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/ConfigurationFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/DeleteDataFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/DeleteDataFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/FirstOrderIdFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/FirstOrderIdFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/GenerateQrFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/GenerateQrFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/ItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/ItemFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/LoginFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/MainFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/MainFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OrderFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OrderListFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OrderListFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OutOfStokeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/OutOfStokeFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SettingFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SettingFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SignUpFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SignUpFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SupplierFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/controller/SupplierFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/DeliveryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/DeliveryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/DriverDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/DriverDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/EmployeeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/ItemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/ItemDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/ItemDetailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/ItemDetailDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/ItemSupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/ItemSupplierDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/QueryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/QueryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/SalaryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/SalaryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/SupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/SupplierDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/CustomerDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/CustomerDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/DeliveryDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/DeliveryDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/DriverDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/DriverDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/EmployeeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/EmployeeDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/ItemDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/ItemDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/ItemDetailDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/ItemDetailDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/ItemSupplierDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/ItemSupplierDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/OrderDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/OrderDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/SupplierDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/Laptop_Shop_Management/dao/custom/impl/SupplierDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Report/LapTop_Bill.jrxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/Report/LapTop_Bill.jrxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/comboBox.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/css/comboBox.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/css/table.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-add-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-add-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-back-48.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-back-48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-bin-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-bin-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-buy-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-buy-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-cart-30.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-cart-30.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-clear-48.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-clear-48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-close-48.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-close-48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-close.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-close.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-configurations-64.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-configurations-64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-correct-48.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-correct-48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-customer-52(1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-customer-52(1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-customer-64.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-customer-64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-customer.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-customer.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-dashboard-48.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-dashboard-48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-delete-48.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-delete-48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-delete-64.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-delete-64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-delivery.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-delivery.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-download.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-download.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-driver-50 (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-driver-50 (1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-email-60.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-email-60.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-employee-50(1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-employee-50(1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-employee.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-employee.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-expand-arrow-24.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-expand-arrow-24.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-folder-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-folder-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-id-verified-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-id-verified-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-item-50 (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-item-50 (1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-item-64.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-item-64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-item.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-item.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-log-out-50 (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-log-out-50 (1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-log-out.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-log-out.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-minimize-48.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-minimize-48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-order-64.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-order-64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-order.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-order.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-password-50 (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-password-50 (1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-purchase-order-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-purchase-order-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-qr-code-48.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-qr-code-48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-qr-code-64.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-qr-code-64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-search-24.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-search-24.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-sell-sign-48.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-sell-sign-48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-setting-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-setting-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-setting.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-setting.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-supplier-50 (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-supplier-50 (1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-update-64.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-update-64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-user-50 (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-user-50 (1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon/icons8-x-coordinate-48.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/icon/icons8-x-coordinate-48.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/Wed_8_05_2024_10_11_14.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/image/Wed_8_05_2024_10_11_14.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/daily-graphic-designer-working-on-laptop.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/image/daily-graphic-designer-working-on-laptop.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlDB/quries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/sqlDB/quries.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/buyingList_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/buyingList_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/buying_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/buying_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/configuration_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/configuration_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/customer_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/customer_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/deleteData_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/deleteData_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/deliverySetting_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/deliverySetting_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/driver_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/driver_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/email_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/email_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/employee_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/employee_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/firstOrderId_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/firstOrderId_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/generateQr_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/generateQr_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/item_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/item_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/login_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/login_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/main_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/main_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/orderList_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/orderList_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/order_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/order_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/outOfStoke_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/outOfStoke_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/password_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/password_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/payment_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/payment_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/setting_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/setting_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/signUp_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/signUp_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/supplier_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/supplier_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/taxRate_from.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/taxRate_from.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/userSetting_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lk.ijse.Laptop_Shop_Management/userSetting_form.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -519,7 +387,11 @@
       <workItem from="1719855642721" duration="258000" />
       <workItem from="1719917103688" duration="8597000" />
       <workItem from="1719980137538" duration="6422000" />
-      <workItem from="1720073095747" duration="3233000" />
+      <workItem from="1720073095747" duration="3463000" />
+      <workItem from="1720078472478" duration="286000" />
+      <workItem from="1720352448429" duration="137000" />
+      <workItem from="1720363637766" duration="868000" />
+      <workItem from="1720448649396" duration="17000" />
     </task>
     <task id="LOCAL-00001" summary="set push">
       <option name="closed" value="true" />
@@ -569,7 +441,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719206609525</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add layered architecture">
+      <option name="closed" value="true" />
+      <created>1720076456665</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720076456665</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,7 +463,8 @@
     <MESSAGE value="set file chooser" />
     <MESSAGE value="using layered architecture" />
     <MESSAGE value="null value error fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="null value error fixed" />
+    <MESSAGE value="add layered architecture" />
+    <option name="LAST_COMMIT_MESSAGE" value="add layered architecture" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />
